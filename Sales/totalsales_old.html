@@ -1,0 +1,627 @@
+
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Campus 365</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="./sales.css">
+    
+
+   
+    <script src="salse.js"></script>
+   
+   <style>
+    
+.bg-df-1 {
+  background-color: #0168fa; }
+
+.bg-df-2 {
+  background-color: #69b2f8; }
+
+.bg-df-3 {
+  background-color: #d1e6fa; }
+
+.bg-litecoin {
+  background-color: #325a98; }
+
+.stroke-wd-3 {
+  stroke-width: 3px; }
+
+.wd-12 {
+  width: 12px; }
+
+.ht-12 {
+  height: 12px; }
+
+
+  .dashboard-yearly-expense-chart{
+    margin-top: 130px !important;
+  }
+  .dashboard-yearly-toggle-label{
+    position: relative;
+    top: -1px;
+    right: 44px;
+  }
+
+.chart-one {
+  position: relative;
+  overflow: hidden;
+  margin: 0 15px 15px;
+  padding-top: 80px;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem; }
+  @media (min-width: 576px) {
+    .chart-one {
+      margin: 0 20px 15px;
+      padding-top: 0;
+      overflow: visible; } }
+  .chart-one .flot-x-axis {
+    display: none; }
+    @media (min-width: 576px) {
+      .chart-one .flot-x-axis {
+        display: block; } }
+    .chart-one .flot-x-axis .flot-tick-label {
+      transform: translateY(2px);
+      text-transform: uppercase;
+      font-size: 9px;
+      font-weight: 500;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter UI", Roboto, sans-serif;
+      letter-spacing: .5px;
+      color: #8392a5; }
+  .chart-one .flot-chart {
+    margin-left: -12px;
+    margin-right: -10px;
+    height: 350px; }
+
+.chart-two .flot-x-axis > div {
+  transform: translateY(3px);
+  text-transform: uppercase;
+  font-size: 9px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter UI", Roboto, sans-serif;
+  letter-spacing: .5px;
+  color: #8392a5; }
+  .chart-two .flot-x-axis > div:first-child {
+    margin-left: 15px; }
+
+.chart-two .flot-chart {
+  height: 150px;
+  margin-left: -15px;
+  margin-right: -13px; }
+  @media (min-width: 576px) {
+    .chart-two .flot-chart {
+      height: 210px; } }
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    .chart-two .flot-chart {
+      height: 155px; } }
+
+.chart-three .flot-chart {
+  margin-left: -7px;
+  margin-right: -8px;
+  margin-bottom: -5px; }
+
+.chart-four .flot-chart {
+  margin-right: -8px;
+  margin-bottom: -5px; }
+
+.chart-five > div {
+  position: relative;
+  margin-left: -10px;
+  height: 225px; }
+
+.table-dashboard {
+  font-size: 13px; }
+  .table-dashboard thead th,
+  .table-dashboard tbody td {
+    border-color: #e5e9f2;
+    white-space: nowrap; }
+    .table-dashboard thead th:first-child,
+    .table-dashboard tbody td:first-child {
+      padding-left: 20px; }
+    .table-dashboard thead th:last-child,
+    .table-dashboard tbody td:last-child {
+      padding-right: 20px; }
+  .table-dashboard thead th {
+    font-family: -apple-system, BlinkMacSystemFont, "Inter UI", Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: #8392a5; }
+
+.table-dashboard-one tbody td {
+  padding-top: 5px;
+  padding-bottom: 5px; }
+
+/* -------------- dashboard-two.html ----------------- */
+.chart-six {
+  margin-left: -5px;
+  height: 150px; }
+  @media (min-width: 576px) {
+    .chart-six {
+      height: 200px; } }
+  @media (min-width: 768px) {
+    .chart-six {
+      height: 250px; } }
+  @media (min-width: 992px) {
+    .chart-six {
+      height: 300px; } }
+
+.chart-seven {
+  height: 150px; }
+  @media (min-width: 992px) {
+    .chart-seven {
+      height: 205px; } }
+  @media (min-width: 1200px) {
+    .chart-seven {
+      height: 188px; } }
+
+.chart-eight .flot-chart {
+  margin-left: -26px;
+  margin-right: -26px;
+  margin-bottom: -26px;
+  height: 126px; }
+  @media (min-width: 768px) {
+    .chart-eight .flot-chart {
+      height: 167px; } }
+  @media (min-width: 992px) {
+    .chart-eight .flot-chart {
+      margin-left: -30px;
+      margin-right: -30px;
+      margin-bottom: -30px;
+      height: 126px; } }
+
+.chart-nine .flot-chart {
+  height: 142px;
+  margin-left: -5px;
+  margin-right: -5px; }
+
+.chart-nine .flot-y-axis .flot-tick-label,
+.chart-nine .flot-x-axis .flot-tick-label {
+  font-size: 9px;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter UI", Roboto, sans-serif;
+  font-weight: 500;
+  color: #8392a5; }
+
+.chart-nine .flot-y-axis .flot-tick-label {
+  margin-left: -10px; }
+  .chart-nine .flot-y-axis .flot-tick-label:first-child {
+    display: none; }
+
+.chart-nine .flot-x-axis .flot-tick-label {
+  transform: translateY(3px); }
+  .chart-nine .flot-x-axis .flot-tick-label:last-child {
+    margin-left: -5px; }
+
+.chart-ten .flot-chart {
+  height: 95px;
+  margin-left: -8px;
+  margin-right: -12px; }
+
+.card-dashboard-table .table th, .card-dashboard-table .table td {
+  border-color: rgba(72, 94, 144, 0.16);
+  padding: 10px 15px;
+  font-size: 13px;
+  text-align: right;
+  white-space: nowrap; }
+
+.card-dashboard-table .table thead tr th:first-child {
+  border-left-width: 0; }
+
+.card-dashboard-table .table thead tr th:last-child {
+  border-right-width: 0; }
+
+.card-dashboard-table .table thead tr:first-child th {
+  border-top-width: 0;
+  font-size: 13px;
+  background-color: #f5f6fa;
+  text-align: left; }
+
+.card-dashboard-table .table thead tr:last-child th {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  padding: 8px 15px;
+  color: #8392a5; }
+
+.card-dashboard-table .table thead tr th:first-child,
+.card-dashboard-table .table tbody tr td:first-child {
+  text-align: left; }
+
+.card-dashboard-table .table strong {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter UI", Roboto, sans-serif;
+  font-weight: 500; }
+
+/* ---------- dashboard-three.html ------------ */
+.card-crypto .nav-line {
+  border-bottom-width: 0;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: .5px; }
+  .card-crypto .nav-line .nav-link + .nav-link {
+    margin-left: 10px; }
+  .card-crypto .nav-line .nav-link.active::after {
+    height: 3px;
+    bottom: -10px;
+    border-radius: 0.25rem;
+    display: none; }
+    @media (min-width: 576px) {
+      .card-crypto .nav-line .nav-link.active::after {
+        display: block; } }
+
+.chart-eleven .flot-chart {
+  height: 160px; }
+  @media (min-width: 576px) {
+    .chart-eleven .flot-chart {
+      height: 220px; } }
+  @media (min-width: 768px) {
+    .chart-eleven .flot-chart {
+      height: 250px; } }
+  @media (min-width: 992px) {
+    .chart-eleven .flot-chart {
+      height: 284px; } }
+
+.chart-eleven .flot-x-axis > div:first-child,
+.chart-eleven .flot-y-axis > div:first-child {
+  display: none; }
+
+.crypto {
+  position: relative;
+  padding: 20px; }
+
+.crypto-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20px; }
+
+.crypto-icon-sm {
+  height: 35px;
+  width: 35px;
+  font-size: 16px; }
+
+.crypto-bitcoin-cash {
+  line-height: 0;
+  transform: rotate(-40deg); }
+
+.chart-twelve .flot-chart {
+  height: 80px;
+  margin-left: -20px;
+  margin-right: -20px; }
+
+.list-label {
+  padding: 6px 20px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter UI", Roboto, sans-serif;
+  background-color: #f5f6fa;
+  color: #8392a5;
+  letter-spacing: 1px;
+  border-top: 1px solid #e5e9f2; }
+  .list-label:first-of-type {
+    border-top-width: 0; }
+
+.list-item {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #e5e9f2; }
+
+.chart-thirteen {
+  height: 220px; }
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    .chart-thirteen {
+      height: 143px; } }
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    .chart-thirteen {
+      height: 160px; } }
+
+.chart-fourteen {
+  position: relative;
+  overflow: hidden; }
+  .chart-fourteen .flot-chart {
+    height: 200px;
+    margin-top: -10px;
+    margin-left: -30px;
+    margin-right: -28px; }
+  .chart-fourteen .flot-x-axis .flot-tick-label {
+    font-size: 9px;
+    font-weight: 500;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter UI", Roboto, sans-serif;
+    color: #8392a5;
+    text-transform: uppercase;
+    letter-spacing: -.2px; }
+
+.chart-fifteen {
+  overflow: hidden; }
+  .chart-fifteen .flot-chart {
+    height: 200px;
+    margin-right: -18px; }
+  .chart-fifteen .flot-y-axis .flot-tick-label,
+  .chart-fifteen .flot-x-axis .flot-tick-label {
+    font-size: 9px;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter UI", Roboto, sans-serif;
+    font-weight: 500;
+    color: #67788e; }
+  .chart-fifteen .flot-y-axis .flot-tick-label:first-child {
+    display: none; }
+  .chart-fifteen .flot-x-axis .flot-tick-label {
+    text-transform: uppercase;
+    font-size: 8px;
+    font-weight: 600; }
+
+.chart-sixteen {
+  overflow: hidden; }
+  .chart-sixteen .flot-chart {
+    height: 180px;
+    margin-left: -8px;
+    margin-right: -8px;
+    margin-bottom: -8px; }
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      .chart-sixteen .flot-chart {
+        height: 274px; } }
+    @media (min-width: 1200px) {
+      .chart-sixteen .flot-chart {
+        height: 186px; } }
+  .chart-sixteen .flot-x-axis .flot-tick-label {
+    font-size: 9px;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter UI", Roboto, sans-serif;
+    margin-top: -25px;
+    margin-left: -25px; }
+    .chart-sixteen .flot-x-axis .flot-tick-label:first-child {
+      display: none; }
+
+.chart-seventeen {
+  height: 260px; }
+.chart-seventeen-auto {
+  height: 800px; }
+.table-dashboard-two {
+  width: 100%;
+  font-size: 13px; }
+  .table-dashboard-two tr + tr td {
+    border-top: 1px solid #e5e9f2; }
+  .table-dashboard-two td {
+    vertical-align: top;
+    line-height: 1;
+    padding: 8px 0; }
+    .table-dashboard-two td:first-child {
+      padding-left: 0; }
+      .table-dashboard-two td:first-child div {
+        opacity: .7; }
+    .table-dashboard-two td:nth-child(3), .table-dashboard-two td:last-child {
+      font-family: "Rubik", sans-serif; }
+    .table-dashboard-two td:last-child {
+      color: #8392a5; }
+   </style>
+    
+  
+  </head>
+  <body class="d-flex flex-column h-100p" onload="FreshworksWidget('hide', 'launcher');">
+   
+<div class="content content-fixed">
+ <div class="container pd-x-0">
+    <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+       <div>
+          <nav aria-label="breadcrumb">
+             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                <!-- <a  style="padding-top: 20px;" class="breadcrumb-item active" href="https://newui.campus365.io/admin/admin/dashboard">Dashboard</a> -->
+             </ol>
+          </nav>
+          <h1 style="color: brown;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-weight: bold;font-size: 34px;" class="mg-b-0 tx-spacing--1 ml10"><span class="text-wrapper"><span class="letters"> Total Sales Report...</span></span></h1>
+       </div>
+       <div class="d-md-block mg-t-20 mg-sm-t-0">
+                        <a style="font-size: 18px;" href="" class="btn btn-sm pd-x-50 btn-dark btn-uppercase mg-t-5"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1 wd-10 mg-r-5"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg> Generate Bill</a>
+                                  </div>
+    </div>
+ </div>
+</div>
+<div class="container pd-x-10">
+ 
+    <div class="row">
+             <div class="col-lg-12 col-sm-12 mg-t-10">
+          <div class="card shadow-sm">
+             <div class="card-header pd-y-20 d-flex align-items-center justify-content-between">
+                <h6 class="mg-b-0"> Total Sales Collection & Expenses For<span id="fees-collection-header"></span></h6>
+                <div>
+                   <div class="custom-control custom-switch">
+                      <label class="dashboard-yearly-toggle-label">Yearly</label>
+                      <input type="checkbox" class="custom-control-input" id="toggleExpenseType">
+                      <label class="custom-control-label" for="toggleExpenseType">Monthly</label>
+                   </div>
+                </div>
+             </div>
+             <!-- card-header -->
+             <div class="card-body pos-relative pd-0 ">
+                <div class="col-sm-12 pos-absolute t-20 l-20 wd-xl-100p z-index-10">
+                   <div class="row">
+                      <div class="col-sm-6">
+                         <h3 class="tx-normal tx-rubik tx-spacing--2 mg-b-5" >Rs. 
+                            <span id="total-expense">
+                               100,229                            </span>
+                         </h3>
+                         <h6 class="tx-uppercase tx-12 tx-spacing-1 tx-color-02 tx-semibold mg-b-10">Total Expense</h6>
+                         <p class="mg-b-0 tx-12 tx-color-03"><span id="fees-collection-text"></span></p>
+                      </div>
+                      <!-- col -->
+                      <div class="col-sm-6 mg-t-20 mg-sm-t-0">
+                         <h3 class="tx-normal tx-rubik tx-spacing--2 mg-b-5">Rs. 
+                            <span id="total-collection">
+                               1,130000                          </span>
+                         </h3>
+                         <h6 class="tx-uppercase tx-12 tx-spacing-1 tx-color-02 tx-semibold mg-b-10">Total Collection</h6>
+                         <p class="mg-b-0 tx-12 tx-color-03"><span id="fees-collection-text2"></span></p>
+                      </div>
+                      <!-- col -->
+                   </div>
+                   <!-- row -->
+                </div>
+                <div class="chart-one dashboard-yearly-expense-chart">
+                   <canvas id="flotChart" class="flot-chart" height="160"></canvas>
+                </div>
+                <!-- chart-one -->
+             </div>
+             <!-- card-body -->
+          </div>
+          <!-- card -->
+       </div>
+          <div class="col-12 mg-t-10">
+       <div class="row">
+                        
+                                    
+                   </div>
+    </div>
+    <div class="col-12 mg-t-10">
+       <div class="row">
+                         
+          
+                         
+                                     
+                   </div>
+    </div>
+ </div>
+ 
+ 
+ 
+      
+ </div>
+
+
+
+
+
+<script>
+
+ $(function(){
+    'use strict'
+          var lineChartCanvas = $("#flotChart").get(0).getContext("2d");
+    
+    var yearly_collection_array = ["0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00","0.00",369566819.1481481,761319461.7129629];
+    var yearly_expense_array = [0,0,0,11000,70100,1212,1500,0,100050000,43500,48200,4066];
+    var total_month = ["Sep","Oct","Nov","Dec","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug"];
+    
+    // lineChart.Line(areaChartData_expense_Income, lineChartOptions);
+    var current_month_days = ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"];
+    var days_collection = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    var days_expense = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    
+    var lineChart = undefined;
+    //yearly
+    var areaChartData_expense_Income = {
+      type:'line',
+      data:{
+         labels: total_month,
+         datasets:[{
+            label:"Expense",
+            data: yearly_expense_array,
+            // backgroundColor:"rgba(106 ,178 ,248 ,0.4)",
+            backgroundColor:'#373853',
+            borderColor:'#373853',
+            font: '"IBM Plex Sans", sans-serif',
+            fill:false
+         },{
+            label:"Collection",
+            data: yearly_collection_array,
+            backgroundColor:'#2196f3',
+            borderColor:'#2196f3',
+            font: '"IBM Plex Sans", sans-serif',
+            fill:false
+         }],
+         options:{
+            showLine: true,
+            maintainAspectRatio: false,
+         }
+      }
+   };
+    function updateMonthlyChart(){
+       //update labels
+       lineChart.data.labels =current_month_days;
+       // update datasets data
+       lineChart.data.datasets[0].data = days_expense;
+       lineChart.data.datasets[1].data = days_collection;
+       lineChart.update();
+       $("#fees-collection-header").html( " September 2022");
+       $("#fees-collection-text").html( "Total Expenses made in the current month.");
+       $("#fees-collection-text2").html( "Total Income generated during the current month.");
+       $('#total-expense').html(" 0");
+       $('#total-collection').html(" 0");
+    }
+   function updateYearlyChart(){
+    if (typeof(lineChart) != "undefined") {
+       // if line chart already exists then only update the data
+         //update labels
+       lineChart.data.labels =total_month;
+       // update datasets data
+       lineChart.data.datasets[0].data = yearly_expense_array;
+       lineChart.data.datasets[1].data = yearly_collection_array;
+       lineChart.update();
+    }else{
+       // else create one
+       lineChart = new Chart(lineChartCanvas,areaChartData_expense_Income);
+    }
+     $("#fees-collection-header").html(" "+ "2021-2022");
+     $("#fees-collection-text").html( "Total Expenses made in the current session.");
+     $("#fees-collection-text2").html( "Total Income generated during the current session.");
+     $('#total-expense').html(" 10,02,29,578");
+     $('#total-collection').html(" 1,13,08,86,280.86");
+    }
+
+    function setExpenseAndCollection(value){
+      
+          if(value){
+              updateMonthlyChart();
+           }else{
+              updateYearlyChart();
+           }     
+    }
+    $('#toggleExpenseType').change(function(){
+       setExpenseAndCollection(this.checked);
+    })
+    //to trigger the yearly view
+    setExpenseAndCollection(false);
+
+       var doughnutCallbacks = {
+       title: function(tooltipItem, data) {
+          return data['labels'][tooltipItem[0]['index']];
+       },
+       label: function(tooltipItem, data) {
+       return data['datasets'][0]['data'][tooltipItem['index']].toFixed(2) + ' %';
+       },
+    }
+    
+          // Fees Donut chart 
+   
+    
+    // Expense Donut chart 
+
+                // Library Donut chart 
+  
+          
+          // Student Attendance Donut chart 
+   
+                   // Student Ratio Donut chart 
+      
+       })
+</script>
+
+<script>
+ 
+</script>
+
+<script src="sales1.js"></script>
+
+
+
+</body>
+</html> 

@@ -1,0 +1,25 @@
+      @import url(https://fonts.googleapis.com/css?family=Exo+2:300,400,700);
+
+body{font-family: 'Exo 2';font-size: 14px;color: #515151;}
+.table{width: 1140px;margin: 0 auto;margin-top: 40px;border: 1px solid #c3c4c7;text-align: left;}
+
+thead tr {background: #00b9ff;  color: #fff;}
+tr:nth-child(even){color: inherit;background-color: #00000008;}
+
+.table thead th{border-bottom: 1px solid #c3c4c7;}
+.table th{padding: 6px 10px;background: #00000005;}
+.table th input[type=checkbox]{width: 18px;height: 18px;}
+.table th div{margin-bottom: 5px;}
+
+.table th .action{font-size: 11px;}
+.table th .action span{padding: 5px 0;color: #696969;}
+.table th .action span:hover{color: #0480ff;cursor: pointer;}
+
+.table th .name{text-transform: uppercase;}
+.table th .UserName{font-size: 13px;}
+
+.get-acrion{width: 25px;}
+.column-image{width: 43px;}
+.table th img{height: 53px;width: 43px;border-radius: 3px;}
+
+@media screen and (max-width:1140px){.table{width: 100%;}}
