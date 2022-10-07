@@ -819,7 +819,7 @@ if (!isset($_SESSION["sess_user"])) {
 						<div class="head">
 							<div>
 								<a href="remove_membership_card.php">
-									<p style="font-weight: bold;">Remove Card From Franchise</p>
+									<p style="font-weight: bold;">REPLACE ASSIGNED CARD TO FRANCHISE</p>
 								</a>
 							</div>
 							<!-- <i class='bx bx-trending-up icon' ></i> -->

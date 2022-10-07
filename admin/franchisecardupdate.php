@@ -1,4 +1,4 @@
- <?php
+<?php
      include "../api/connection.php";
      $sql = "SELECT * FROM `membership_card` WHERE `assign_name` != '' ";
      $query = mysqli_query($conn,$sql);
@@ -199,16 +199,8 @@ form .buttons button , .backBtn{
        <a href="../admin/dashboard.php"> <button style="background-color: #6c63ff;color:white;float: right;padding:8px; border-radius: 10px; margin-bottom:10px">Go Home</button></a>
        <div class="container" style="margin-top:60px;">
         <div class="row">
-            <div class="col-sm-4 border" style="padding: 20px;text-align:center;">
-                        <h5> Franchise membership card</h5>
-                       <!-- <input id="mobile" onchange="selectbrand()" style="width: 200px;padding:10px; border-radius: 25px;" list="list1" placeholder="Card No"> -->
-                       <select id="mobile" onchange="selectbrand()">
-                        <?php while($row = mysqli_fetch_assoc($membership_card)){ ?>
-                            <option><?php echo $row['assign_name'] ?></option>
-                        <?php } ?>
-                        </select>
-            </div>    
-           <div class="col-sm-8 border" style="padding: 20px;text-align:center;">
+             
+<div class="col-sm-8 border" style="padding: 20px;text-align:center;">
            <div class="container pd-x-0">
             <div data-label="Stock Details" class="df-example demo-table mg-t-25">
                 <table class="table tx-13" id="example1">
@@ -226,7 +218,7 @@ form .buttons button , .backBtn{
             </div>
         </div>
            </div>
-    <!-- <form action="removeCard.php" method="get" enctype="multipart/form-data">
+    <form action="removeCard.php" method="get" enctype="multipart/form-data">
             <div class="form first" style="text-align: center;margin:20px;border:2px solid #808080;width:80%;padding:10px;justify-items: center;">
                 <div class="details personal">
                     <div class="fields" >
@@ -240,7 +232,7 @@ form .buttons button , .backBtn{
                     <span   class="btnText">Submit</span>
                          <i class="uil uil-navigator"></i> 
                     </button>
-    </form>         -->
+    </form>        
         </div>
        </div>
     </div>

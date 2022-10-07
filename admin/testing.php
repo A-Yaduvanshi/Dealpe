@@ -63,19 +63,29 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="form-group form">
-<form action="" method="get">
+<form action="./testingapi.php" method="get">
+    <?php
+    include "../api/connection.php";
+    $sql="SELECT * FROM `testing`";
+    $run=mysqli_query($conn,$sql);
+    
+    ?>
                     <!-- Various options in drop down menu to
 						select the types of data structures
 						that we need -->
-                    <select class="mul-select" multiple="true">
-                        <option value="Stack">Stack</option>
-                        <option value="Queue">Queue</option>
-                        <option value="Linked-List">Linked-List</option>
-                        <option value="Heap">Heap</option>
-                        <option value="Binary-Tree">Binary-Tree</option>
-                        <option value="Graph">Graph</option>
-                        <option value="Array">Array</option>
+                    <select name="cards" class="mul-select" multiple="true">
+                        <?php while ($fetch=mysqli_fetch_assoc($run)) {?>
+                          
+                            <option  value="<?php echo $fetch['cards']?>"><?php echo $fetch['cards']?></option>
+                      <?php  } ?>
+                       
+                       
                     </select>
+                    <input name="name" placeholder="Enter franchise name" type="text" required >
+                    <button class="nextBtn" style="margin-left: 180px;">
+                             <span class="btnText">Submit</span>
+                             <!-- <i class="uil uil-navigator"></i> -->
+                         </button>
 </form>
                 </div>
             </div>

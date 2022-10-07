@@ -1,6 +1,15 @@
 
 <?php
 include "../api/connection.php";
+$name=$_GET['name'];
+$card_no=$_GET['cards'];
+$sql="UPDATE `testing` SET `name`='".$name."' WHERE `cards` IN(1,5,4,3)";
 
-$sql="INSERT INTO `testing`(`id`, `cards`, `name`, `date`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')";
+$run=mysqli_query($conn,$sql);
+if ($run) {
+    # code...
+    echo "File IS RUnning";
+}else{
+    echo "File IS NOt Running";
+}
 ?>
