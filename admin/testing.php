@@ -63,6 +63,7 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="form-group form">
+<<<<<<< HEAD
                     <form action="./testingapi.php" method="get">
                         <!-- Various options in drop down menu to
 						select the types of data structures
@@ -83,6 +84,32 @@
                             <!-- <i class="uil uil-navigator"></i> -->
                         </button>
                     </form>
+=======
+<form action="./testingapi.php" method="get">
+    <?php
+    include "../api/connection.php";
+    $sql="SELECT * FROM `testing`";
+    $run=mysqli_query($conn,$sql);
+    
+    ?>
+                    <!-- Various options in drop down menu to
+						select the types of data structures
+						that we need -->
+                    <select name="cards" class="mul-select" multiple="true">
+                        <?php while ($fetch=mysqli_fetch_assoc($run)) {?>
+                          
+                            <option  value="<?php echo $fetch['cards']?>"><?php echo $fetch['cards']?></option>
+                      <?php  } ?>
+                       
+                       
+                    </select>
+                    <input name="name" placeholder="Enter franchise name" type="text" required >
+                    <button class="nextBtn" style="margin-left: 180px;">
+                             <span class="btnText">Submit</span>
+                             <!-- <i class="uil uil-navigator"></i> -->
+                         </button>
+</form>
+>>>>>>> b71d2d8c1113274fca62c088d08055851f4b776a
                 </div>
             </div>
         </div>
