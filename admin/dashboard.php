@@ -707,9 +707,9 @@ if (!isset($_SESSION["sess_user"])) {
 	<body>
 		<!-- SIDEBAR -->
 		<section id="sidebar">
-			<a href="../admin/dashboard.php" class="brand"><img style="height:  70px;width:70px;font-weight: bold;" src="../dealpaylogo.jpg">DealPe</a>
+			<a href="../admin/dashboard.php" class="brand"><img style="height:  70px;width:70px;font-weight: bold;" src="../dealpaylogo.jpg">DealPe Admin Dashboard</a>
 			<ul class="side-menu">
-				<li><a href="#top" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard</a></li>
+				<li><a href="#top" class="active"><i class='bx bxs-dashboard icon'></i>Dashboard</a></li>
 				<li class="divider" data-text="main">Main</li>
 				<li>
 					<a style="font-weight: bold;" href="../admin/mers.php"><i class='bx bxs-log-in icon'></i>Merchant</a>
@@ -790,7 +790,7 @@ if (!isset($_SESSION["sess_user"])) {
 						<!-- <span class="progress" data-value="60%"></span>
 						span class="label">60%</span> -->
 					</div>
-					
+
 					<div class="card">
 						<div class="head">
 							<div>

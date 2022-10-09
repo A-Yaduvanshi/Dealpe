@@ -181,13 +181,17 @@ $query = mysqli_query($conn, $sql);
         <table class="_table table_sort">
             <thead>
                 <tr>
-                    <!-- <th>SL</th> -->
+                    <th>SALES EXECUTIVE ID</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>PASSWORD</th>
                     <th>Gender</th>
-                    <th>Phone</th>
                     <th>Address</th>
-                    <th>Occupation</th>
+                    <th>STATE</th>
+                    <th>DISTRICT</th>
+                    <th>PIN CODE</th>
+                    <th>Phone</th>
+
                     <th>Commission</th>
                     <th>Remove</th>
                 </tr>
@@ -195,16 +199,22 @@ $query = mysqli_query($conn, $sql);
             <tbody id="table_filter">
                 <?php while ($row = mysqli_fetch_row($query)) { ?>
                     <tr>
-                        <!-- <td><?php echo $row['0']; ?></td> -->
+                        <td><?php echo $row['1']; ?></td>
                         <td><?php echo $row['2']; ?></td>
                         <td><?php echo $row['4']; ?></td>
+                        <td><?php echo $row['5']; ?></td>
                         <td>
                             <?php echo $row['6']; ?>
                             <!-- <h5 style="font-family: 'Libre Barcode 39';font-size: 50px;">Deepak</h5> -->
                         </td>
-                        <td><?php echo $row['13']; ?></td>
+
                         <td><?php echo $row['8']; ?></td>
-                        <td><?php echo $row['7']; ?></td>
+
+                        <!-- <td><?php echo $row['7']; ?></td>   -->
+                        <td><?php echo $row['11']; ?></td>
+                        <td><?php echo $row['12']; ?></td>
+                        <td><?php echo $row['14']; ?></td>
+                        <td><?php echo $row['13']; ?></td>
                         <td><?php echo $row['19']; ?></td>
                         <td>
                             <a href="./deleteSale.php?id=<?php echo $row['0']; ?>">

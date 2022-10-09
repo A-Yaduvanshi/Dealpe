@@ -665,7 +665,7 @@ if (!isset($_SESSION['Business_Name'])) {
               $fetchBussinessName = mysqli_fetch_assoc($query_4);
               $bussiness = $fetchBussinessName['owner_name'];
               // echo $bussiness;
-              $sql = "SELECT COUNT(*) as total_pet FROM `membership_card` WHERE `assign`='1' AND`assign_name`='" . $bussiness . "' AND `asign_count`='1' and  `expiry_date`='3 months'";
+              $sql = "SELECT COUNT(*) as total_pet FROM `membership_card` WHERE `assign`='1' AND`assign_name`='" . $bussiness . "' AND `asign_count`='1' ";
               $run = mysqli_query($conn, $sql);
               $data = mysqli_fetch_assoc($run);
               ?>
@@ -685,7 +685,7 @@ if (!isset($_SESSION['Business_Name'])) {
               $query_4 = mysqli_query($conn, $sql_4);
               $fetchBussinessName = mysqli_fetch_assoc($query_4);
               $bussiness = $fetchBussinessName['owner_name'];
-              $sql = "SELECT COUNT(*) as total_pet FROM `membership_card` WHERE `assign`='1' AND`assign_name`='" . $bussiness . "' AND `asign_count`='1' and  `expiry_date`='6 months'";
+              $sql = "SELECT COUNT(*) as total_pet FROM `membership_card` WHERE `assign`='1' AND`assign_name`='" . $bussiness . "' AND `asign_count`='1' ";
               $run = mysqli_query($conn, $sql);
               $data = mysqli_fetch_assoc($run);
               ?>
@@ -746,36 +746,37 @@ if (!isset($_SESSION['Business_Name'])) {
               // $saleid = mysqli_fetch_assoc($saleDataid);
               // echo $saleid['commission'];
               // $total_commision = $row_card_price["membership_price"] * $saleid['commission'] / 100;
-              // ?>
+              // 
+              ?>
             <th>id</th> -->
-            <!-- <th></th> -->
-            <!-- <th>Membership Price</th> -->
-            <!-- <th>Commision</th> -->
-            <!-- <th>Sale Person </th> -->
-            <!-- <th>Remove Data</th> -->
-          <!-- </tr> -->
-        <!-- </thead> -->
-        <!-- <tbody id="table_filter"> -->
+      <!-- <th></th> -->
+      <!-- <th>Membership Price</th> -->
+      <!-- <th>Commision</th> -->
+      <!-- <th>Sale Person </th> -->
+      <!-- <th>Remove Data</th> -->
+      <!-- </tr> -->
+      <!-- </thead> -->
+      <!-- <tbody id="table_filter"> -->
 
-          <!-- <tr> -->
-            <!-- <td><?php echo $row['id']; ?></td> -->
-            <!-- <td><?php echo $row['membership_card']; ?></td> -->
-            <!-- <td><?php echo $row['membership_price']; ?></td> -->
-            <!-- <td><?php echo  $total_commision; ?></td>
+      <!-- <tr> -->
+      <!-- <td><?php echo $row['id']; ?></td> -->
+      <!-- <td><?php echo $row['membership_card']; ?></td> -->
+      <!-- <td><?php echo $row['membership_price']; ?></td> -->
+      <!-- <td><?php echo  $total_commision; ?></td>
             <td> -->
-              <!-- <input style="width: 90%" list="list2" name="sale"> -->
-              <!-- <?php $row = mysqli_fetch_assoc($run); { ?>
+      <!-- <input style="width: 90%" list="list2" name="sale"> -->
+      <!-- <?php $row = mysqli_fetch_assoc($run); { ?>
                 <select name="sale">
                   <option><?php echo $row['Customer_name']; ?></option>
                 </select> -->
 
-                <!-- </div> -->
-            <!-- </td> -->
-            <!-- <td> <a href="./removesale.php?id=<?php echo $res[0]; ?>"><Button class="btn btn-block bg-danger text-white">
+      <!-- </div> -->
+      <!-- </td> -->
+      <!-- <td> <a href="./removesale.php?id=<?php echo $res[0]; ?>"><Button class="btn btn-block bg-danger text-white">
                 Remove</Button></a></td> -->
-          <!-- </tr> -->
-        <!-- <?php }  ?> -->
-        <!-- </tbody> -->
+      <!-- </tr> -->
+      <!-- <?php }  ?> -->
+      <!-- </tbody> -->
       <!-- </table> -->
       </div>
       </div>

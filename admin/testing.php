@@ -63,20 +63,26 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="form-group form">
-<form action="" method="get">
-                    <!-- Various options in drop down menu to
+                    <form action="./testingapi.php" method="get">
+                        <!-- Various options in drop down menu to
 						select the types of data structures
 						that we need -->
-                    <select class="mul-select" multiple="true">
-                        <option value="Stack">Stack</option>
-                        <option value="Queue">Queue</option>
-                        <option value="Linked-List">Linked-List</option>
-                        <option value="Heap">Heap</option>
-                        <option value="Binary-Tree">Binary-Tree</option>
-                        <option value="Graph">Graph</option>
-                        <option value="Array">Array</option>
-                    </select>
-</form>
+                        <select name="name" class="mul-select" multiple="true">
+                            <option value="a">Stack</option>
+                            <option value="b">Queue</option>
+                            <option value="j">Linked-List</option>
+                            <option value="Heap">Heap</option>
+                            <option value="Binary-Tree">Binary-Tree</option>
+                            <option value="Graph">Graph</option>
+                            <option value="Array">Array</option>
+                        </select>
+                        <input name="cards" placeholder="enter card name">
+                        <!-- <input name="name" placeholder="enter name name"> -->
+                        <button class="nextBtn">
+                            <span class="btnText">Submit</span>
+                            <!-- <i class="uil uil-navigator"></i> -->
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

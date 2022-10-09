@@ -7,12 +7,12 @@ if (isset($_POST['submit'])) {
     ) {
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $sql = "select * from `franchisesignup` where `Business_email`='$email' and `Password`='$password'";
+        $sql = "select * from `franchisesignup` where `Business_email`='" . $email . "' and `Password`='" . $password . "'";
         $result = mysqli_query($conn, $sql);
         $res = mysqli_fetch_row($result);
 
         $id =  $res[0];
-        $business=$res[1];
+        $business = $res[1];
         $name = $res[2];
         if ($result) {
             $nums = mysqli_num_rows($result);
@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
                 $_SESSION['sess_email'] = $email;
                 $_SESSION['sess_user'] = $id;
                 $_SESSION['Business_Name'] = $business;
-                $_SESSION['owener_Name']=$name;
+                $_SESSION['owener_Name'] = $name;
                 // echo $id;
                 // header("Location: ../franchise/franchisedashboard.php");
                 echo "<script>alert('Login Successfull')</script>";

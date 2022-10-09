@@ -51,10 +51,10 @@ $query_3 = mysqli_query($conn, $sql_3);
             <span class="link-name">Assign Cards</span>
           </a></li>
         <li>
-            <i class="uil uil-signout"></i>
-            <button onclick="myFunction()" style="width: 100px; height:40px; border-radius:10px;border:none;  background-color:transparent; color:brown; font-size: 20px;font-weight: 400;">Logout</button>
-            <!-- <span class="link-name">Logout</span> -->
-          </li>
+          <i class="uil uil-signout"></i>
+          <button onclick="myFunction()" style="width: 100px; height:40px; border-radius:10px;border:none;  background-color:transparent; color:brown; font-size: 20px;font-weight: 400;">Logout</button>
+          <!-- <span class="link-name">Logout</span> -->
+        </li>
         <li><a href="./Confirmpassword.html">
             <i class="uil uil-signout"></i>
             <span class="link-name">Reset Password</span>
@@ -84,19 +84,19 @@ $query_3 = mysqli_query($conn, $sql_3);
           </div>
 
         </div>
-        <div class="box">
+        <!-- <div class="box">
           <div class="right-side">
             <?php include "../api/connection.php";
             //  session_start();
-            
-    $sql_4="SELECT * FROM `membership_card` WHERE `sales_person`='".$_SESSION['customer_name']."' ";
-    $query_4=mysqli_query($conn,$sql_4);
-    $fetchBussinessName = mysqli_fetch_assoc($query_4);
 
-    // echo "SELECT * FROM `franchisesignup` WHERE `id` = '".$_SESSION['id']."'";
-    $bussiness = $fetchBussinessName['sales_person'];
-// echo $bussiness;
-            $sql = "SELECT COUNT(*) as total_pet FROM `membership_card` WHERE `sales_select`='1' AND`sales_person`='". $bussiness ."'AND`sale_count`='1' AND`expiry_date`='3 months'";
+            $sql_4 = "SELECT * FROM `membership_card` WHERE `sales_person`='" . $_SESSION['customer_name'] . "' ";
+            $query_4 = mysqli_query($conn, $sql_4);
+            $fetchBussinessName = mysqli_fetch_assoc($query_4);
+
+            // echo "SELECT * FROM `franchisesignup` WHERE `id` = '".$_SESSION['id']."'";
+            $bussiness = $fetchBussinessName['sales_person'];
+            // echo $bussiness;
+            $sql = "SELECT COUNT(*) as total_pet FROM `membership_card` WHERE `sales_select`='1' AND`sales_person`='" . $bussiness . "'AND`sale_count`='1' ";
             $run = mysqli_query($conn, $sql);
             $data = mysqli_fetch_assoc($run);
             ?>
@@ -105,28 +105,28 @@ $query_3 = mysqli_query($conn, $sql_3);
 
           </div>
 
-        </div>
-        <div class="box">
+        </div> -->
+        <!-- <div class="box">
           <div class="right-side">
             <?php include "../api/connection.php";
             //  session_start();
-            $sql_4="SELECT * FROM `membership_card` WHERE `sales_person`='".$_SESSION['customer_name']."' ";
-            $query_4=mysqli_query($conn,$sql_4);
+            $sql_4 = "SELECT * FROM `membership_card` WHERE `sales_person`='" . $_SESSION['customer_name'] . "' ";
+            $query_4 = mysqli_query($conn, $sql_4);
             $fetchBussinessName = mysqli_fetch_assoc($query_4);
-        
+
             // echo "SELECT * FROM `franchisesignup` WHERE `id` = '".$_SESSION['id']."'";
             $bussiness = $fetchBussinessName['sales_person'];
-        
-                    $sql = "SELECT COUNT(*) as total_pet FROM `membership_card` WHERE `sales_select`='1' AND`sales_person`='". $bussiness ."'AND`sale_count`='1' AND`expiry_date`='6 months'";
-                    $run = mysqli_query($conn, $sql);
-                    $data = mysqli_fetch_assoc($run);
-                    ?>
-                    <div class="box-topic">6 months Cards</div>
-                    <div class="number text-center"><?php echo $data['total_pet'] ?></div>
-        
+
+            $sql = "SELECT COUNT(*) as total_pet FROM `membership_card` WHERE `sales_select`='1' AND`sales_person`='" . $bussiness . "'AND`sale_count`='1' ";
+            $run = mysqli_query($conn, $sql);
+            $data = mysqli_fetch_assoc($run);
+            ?>
+            <div class="box-topic">6 months Cards</div>
+            <div class="number text-center"><?php echo $data['total_pet'] ?></div>
+
           </div>
 
-        </div>
+        </div> -->
         <div class="box">
           <div class="right-side">
             <?php include "../api/connection.php";
@@ -203,16 +203,16 @@ $query_3 = mysqli_query($conn, $sql_3);
     </div>
   </section>
   <script>
-      function myFunction() {
-        var answer = confirm("Do you really want to logout?")
-        if (answer) {
-          window.location.href = '../api/salelogout.php'
-        } else {
-          text = "You canceled!";
-        }
-        //   document.getElementById("demo").innerHTML = text;
+    function myFunction() {
+      var answer = confirm("Do you really want to logout?")
+      if (answer) {
+        window.location.href = '../api/salelogout.php'
+      } else {
+        text = "You canceled!";
       }
-    </script>
+      //   document.getElementById("demo").innerHTML = text;
+    }
+  </script>
   <script src="script.js"></script>
   <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.2/dist/chart.min.js"></script>
