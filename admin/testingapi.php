@@ -1,7 +1,7 @@
 
 <?php
 include "../api/connection.php";
-<<<<<<< HEAD
+
 $cards = $_GET['cards'];
 $name = $_GET['name'];
 $arr = array($name);
@@ -22,17 +22,17 @@ if ($result) {
 //     echo "0 results";
 // }
 
-=======
-$name=$_GET['name'];
-$card_no=$_GET['cards'];
-$sql="UPDATE `testing` SET `name`='".$name."' WHERE `cards` IN(1,5,4,3)";
 
-$run=mysqli_query($conn,$sql);
+$name = $_GET['name'];
+$card_no = $_GET['cards'];
+$sql = "UPDATE `testing` SET `name`='" . $name . "' WHERE `cards` IN(1,5,4,3)";
+
+$run = mysqli_query($conn, $sql);
 if ($run) {
     # code...
     echo "File IS RUnning";
-}else{
+} else {
     echo "File IS NOt Running";
 }
->>>>>>> b71d2d8c1113274fca62c088d08055851f4b776a
+
 ?>

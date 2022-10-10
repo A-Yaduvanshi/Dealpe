@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include '../api/connection.php';
 
@@ -7,38 +7,48 @@ session_start();
 $membership_card_number = $_GET['membership_card_number'];
 $customerName = $_GET['customer_name'];
 $exiry_date = $_GET['exiry_date'];
-$sql_5="SELECT * FROM `sales`";
+$sql_5 = "SELECT * FROM `sales`";
 
-if($exiry_date == '3 months'){
-$date = new DateTime(date("d-m-Y")); 
-	$date->modify("+90 day"); 
-	$exiry_date=$date->format("d-m-Y");
+if ($exiry_date == '3') {
+	$date = new DateTime(date("d-m-Y"));
+	$date->modify("+90 day");
+	$exiry_date = $date->format("d-m-Y");
+} else if ($exiry_date == '6') {
+	$date = new DateTime(date("d-m-Y"));
+	$date->modify("+180 day");
+	$exiry_date = $date->format("d-m-Y");
 }
-else if($exiry_date == '6 months'){
-	$date = new DateTime(date("d-m-Y")); 
-	$date->modify("+180 day"); 
-	$exiry_date=$date->format("d-m-Y");
-}
 
 
 
 
-$sql = "UPDATE `membership_card` SET `customer_name` = '".$customerName."',`customer_select`=1, `sales_select` = '0' ,`customer_assign_date`= current_timestamp() WHERE `membership_card` = '".$membership_card_number."'";	
+$sql = "UPDATE `membership_card` SET `customer_name` = '" . $customerName . "',`customer_select`=1, `sales_select` = '0' ,`customer_assign_date`= current_timestamp() ,`card_price`='" . $commission . "' WHERE `membership_card` = '" . $membership_card_number . "'";
 
-$query = mysqli_query($conn,$sql);
+$query = mysqli_query($conn, $sql);
 
-$sql_2 = "UPDATE `customer` SET `membership_card` = '".$membership_card_number."',`membership_expiry` = '".$exiry_date."' WHERE `Customer_Name` = '".$customerName."' and `sale_id` = '".$_SESSION['sale_id']."'";
+$sql_2 = "UPDATE `customer` SET `membership_card` = '" . $membership_card_number . "',`membership_expiry` = '" . $exiry_date . "' WHERE `Customer_Name` = '" . $customerName . "' and `sale_id` = '" . $_SESSION['sale_id'] . "'";
 
-if(mysqli_query($conn,$sql_2)){
+if (mysqli_query($conn, $sql_2)) {
+	$price = "SELECT  SUM(membership_price) FROM `membership_card` WHERE `sales_person`='" . $_SESSION['customer_name'] . "' and `customer_select`='1'";
+	$run = mysqli_query($conn, $price);
+	$data = mysqli_fetch_assoc($run);
+	$price_2 = "SELECT * FROM `sales` WHERE `Customer_name`='" . $_SESSION['customer_name'] . "'";
+	$run_2 = mysqli_query($conn, $price_2);
+	$data_2 = mysqli_fetch_assoc($run_2);
+	$commission = ($data['SUM(membership_price)'] * $data_2['commission']) / 100;
+	// echo $commission;
+
+	$sql_5 = "UPDATE `membership_card` SET`card_price`='" . $commission . "' WHERE `membership_card` = '" . $membership_card_number . "'";
+
+	$querys = mysqli_query($conn, $sql_5);
 
 	// echo "UPDATE `customer` SET `membership_card` = '".$membership_card_number."',`membership_expiry` = '".$exiry_date."' WHERE `Customer_Name` = '".$customerName."' and `sale_id` = '".$_SESSION['sale_id']."'";
 
 	echo "<script>alert('Card is assign to customer')</script>";
-    echo "<script>window.location.href='./SaleDashboard.php'</script>";
-}
-else{
+	echo "<script>window.location.href='./SaleDashboard.php'</script>";
+} else {
 	echo "<script>alert('Card is not assign to customer')</script>";
-    echo "<script>window.location.href='./SaleDashboard.php'</script>";
+	echo "<script>window.location.href='./SaleDashboard.php'</script>";
 }
 
 
@@ -78,7 +88,3 @@ else{
 
 // echo "<script>alert('Card is assign')</script>";
 // echo "<script>window.location.href='./dashboard.php'</script>";
-
-
-
-?>

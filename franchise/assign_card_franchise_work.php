@@ -27,22 +27,22 @@ $sql_4 = "SELECT * FROM `franchisesignup` WHERE `id` = '" . $_SESSION['sess_user
 $query_4 = mysqli_query($conn, $sql_4);
 $fetchBussinessName = mysqli_fetch_assoc($query_4);
 $bussiness = $fetchBussinessName['owner_name'];
-$three_months = "SELECT COUNT(*) as total_pet FROM `membership_card` WHERE `assign`='1' AND`assign_name`='" . $bussiness . "' AND `asign_count`='1' and  `expiry_date`='3 months'";
+$three_months = "SELECT COUNT(*) as total_pet FROM `membership_card` WHERE `assign`='1' AND`assign_name`='" . $bussiness . "' AND `asign_count`='1' ";
 $runthree = mysqli_query($conn, $three_months);
 $rowTHree = mysqli_fetch_assoc($runthree);
 $totalThree = $rowTHree['total_pet'];
 // echo "SELECT COUNT(*) as total_pet FROM `membership_card` WHERE `assign_name` = '".$bussiness."' and `expiry_date`='3 months'";
-$six_months = "SELECT COUNT(*) as total_pet FROM `membership_card` WHERE `assign`='1' AND`assign_name`='" . $bussiness . "' AND `asign_count`='1' and  `expiry_date`='6 months'";
+$six_months = "SELECT COUNT(*) as total_pet FROM `membership_card` WHERE `assign`='1' AND`assign_name`='" . $bussiness . "' AND `asign_count`='1'";
 $runsix = mysqli_query($conn, $six_months);
 $totalSix = mysqli_fetch_assoc($runsix);
 $totalSix =  $totalSix['total_pet'];
 // $unsoldCard = $rowTHree + $rowsix;
 //Fetching membership Card num for 3 months
-$T_month = "SELECT *FROM `membership_card` WHERE `assign`='1' AND`assign_name`='" . $bussiness . "' AND `asign_count`='1' and  `expiry_date`='3 months'";
+$T_month = "SELECT *FROM `membership_card` WHERE `assign`='1' AND`assign_name`='" . $bussiness . "' AND `asign_count`='1'";
 $T = mysqli_query($conn, $T_month);
 // $T_r = mysqli_fetch_assoc($T);
 //Fetching membership Card num for 6 months
-$S_month = "SELECT *FROM `membership_card` WHERE `assign`='1' AND`assign_name`='" . $bussiness . "' AND `asign_count`='1' and  `expiry_date`='6 months'";
+$S_month = "SELECT *FROM `membership_card` WHERE `assign`='1' AND`assign_name`='" . $bussiness . "' AND `asign_count`='1'";
 $S = mysqli_query($conn, $S_month);
 ?>
 <!DOCTYPE html>
@@ -281,24 +281,25 @@ $S = mysqli_query($conn, $S_month);
                     </datalist>
                 </div>
                 <div class="col-sm-4 border" style="padding: 10px; font-weight:bold;">
-                    <h5>Total 3_month Cards : <?php echo $totalThree; ?></h5>
-                    <h5>Total 6_month Cards: <?php echo $totalSix; ?></h5>
-
-                </div>
-                <div class="col-sm-3 border" style="padding: 10px;font-weight:bold;text-align: center;">
+                    <h5>Total Cards : <?php echo $totalThree; ?></h5>
+                    <!-- <h5>Total 6_month Cards: <?php echo $totalSix; ?></h5> -->
                     <input list="list2" style="width: 80%;margin-bottom:10px;">
                     <datalist id="list2">
                         <?php while ($T_r = mysqli_fetch_assoc($T)) { ?>
                             <option><?php echo $T_r['membership_card'] ?></option>
                         <?php } ?>
                     </datalist>
-                    <input list="list3" style="width: 80%;">
-                    <datalist id="list3">
-                        <?php while ($S_r = mysqli_fetch_assoc($S)) { ?>
-                            <option><?php echo $S_r['membership_card'] ?></option>
-                        <?php } ?>
-                    </datalist>
                 </div>
+                <!-- <div class="col-sm-3 border" style="padding: 10px;font-weight:bold;text-align: center;">
+
+                    -->
+                <!-- <input list="list3" style="width: 80%;">
+                        <datalist id="list3">
+                            <?php while ($S_r = mysqli_fetch_assoc($S)) { ?>
+                                <option><?php echo $S_r['membership_card'] ?></option>
+                            <?php } ?>
+                        </datalist> -->
+                <!-- </div> -->
             </div>
         </div>
         <form action="assignCard.php" method="get" enctype="multipart/form-data">
@@ -314,12 +315,16 @@ $S = mysqli_query($conn, $S_month);
                         <label>Sales Name</label>
                         <input type="text" placeholder="Enter the sales name" name="sales_name" required>
                     </div>
-                    <div class="input-field">
+                    <!-- <div class="input-field">
                         <label>Membership Duration</label>
                         <select name="exiry_date">
                             <option value="3 months">3 months</option>
                             <option value="6 months">6 months</option>
                         </select>
+                    </div> -->
+                    <div class="input-field">
+                        <label>Quantity</label>
+                        <input type="text" placeholder="Enter cards quantity" name="quantity" required>
                     </div>
                 </div>
                 <div class="details ID">

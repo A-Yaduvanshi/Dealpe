@@ -13,6 +13,7 @@ if (!isset($_SESSION["sess_user"])) {
 	$six_months = "SELECT * FROM `membership_card` WHERE `assign` != 1 and `asign_count` !=1";
 	$runsix = mysqli_query($conn, $six_months);
 	$rowsix = mysqli_num_rows($runsix);
+
 	// $unsoldCard = $rowTHree + $rowsix;
 ?>
 	<!DOCTYPE html>
@@ -794,6 +795,29 @@ if (!isset($_SESSION["sess_user"])) {
 					<div class="card">
 						<div class="head">
 							<div>
+
+								<p style="font-weight: bold;"> Total Revenue</p>
+								<h2><?php
+									$sql = "SELECT  SUM(card_price) FROM `membership_card` WHERE `admin_id`='" . $_SESSION['sess_user'] . "' and `customer_select`='1'";
+									$run = mysqli_query($conn, $sql);
+									// echo $_SESSION['sess_user'];
+									$data = mysqli_fetch_assoc($run);
+									if ($data['SUM(card_price)'] > 0) {
+										# code...
+										echo $data['SUM(card_price)'];
+									} else {
+										echo 0;
+									} ?></h2>
+							</div>
+							<i class='bx bx-trending-down icon down'></i>
+						</div>
+						<!-- <span class="progress" data-value="60%"></span>
+						span class="label">60%</span> -->
+					</div>
+
+					<div class="card">
+						<div class="head">
+							<div>
 								<a href="add_membership_card.php">
 									<p style="font-weight: bold;">Generate MemberShip Card</p>
 								</a>
@@ -819,6 +843,9 @@ if (!isset($_SESSION["sess_user"])) {
 						<div class="head">
 							<div>
 								<a href="remove_membership_card.php">
+									<!-- <?php echo $_SESSION['sess_user'];
+
+											?> -->
 									<p style="font-weight: bold;">REPLACE ASSIGNED CARD TO FRANCHISE</p>
 								</a>
 							</div>

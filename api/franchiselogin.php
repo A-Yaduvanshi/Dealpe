@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
         if ($result) {
             $nums = mysqli_num_rows($result);
 
-            if ($nums > 0) {
+            if ($nums > 0 && $nums < 2) {
                 echo '<script>alert("login succussful")</script>';
                 $_SESSION['sess_email'] = $email;
                 $_SESSION['sess_user'] = $id;
