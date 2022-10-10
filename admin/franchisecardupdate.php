@@ -200,7 +200,7 @@ form .buttons button , .backBtn{
        <div class="container" style="margin-top:60px;">
         <div class="row">
              
-<div class="col-sm-8 border" style="padding: 20px;text-align:center;">
+<!-- <div class="col-sm-8 border" style="padding: 20px;text-align:center;">
            <div class="container pd-x-0">
             <div data-label="Stock Details" class="df-example demo-table mg-t-25">
                 <table class="table tx-13" id="example1">
@@ -217,17 +217,17 @@ form .buttons button , .backBtn{
 </table>
             </div>
         </div>
-           </div>
-    <form action="removeCard.php" method="get" enctype="multipart/form-data">
+           </div> -->
+    <form action="./cardreplace.php?id=" method="get" enctype="multipart/form-data">
             <div class="form first" style="text-align: center;margin:20px;border:2px solid #808080;width:80%;padding:10px;justify-items: center;">
                 <div class="details personal">
                     <div class="fields" >
                         <div class="input-fields">
-                            <h4  style=" font-size:22px;">Assign Card Remove</h4>
-                            <input  style="width:300px; padding:10px;border-radius:22px;" type="text" placeholder="Enter Card Number" name="card_num" required>
+                            <h4  style=" font-size:22px;">Assign Card Replace</h4>
+                            <input  style="width:300px; padding:10px;border-radius:22px;" type="text" placeholder="Enter Card Number" name="card" required>
                         </div>
                     </div>
-                    <span class="title">Identity Details</span> 
+                    <!-- <span class="title">Identity Details</span>  -->
                   <button class="nextBtn" style="width:400px; border-radius:20px;" >
                     <span   class="btnText">Submit</span>
                          <i class="uil uil-navigator"></i> 

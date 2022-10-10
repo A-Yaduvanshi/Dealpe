@@ -11,11 +11,11 @@
     // $runthree = mysqli_query($conn,$three_months);
     // $rowTHree = mysqli_num_rows($runthree);
 
-    $six_months = "SELECT * FROM `membership_card` WHERE `validity_date` = '6 months' and `assign` != 1 and `asign_count` !=1";
+    $six_months = "SELECT * FROM `membership_card` WHERE `assign` != 1 and `asign_count` !=1";
     $runsix = mysqli_query($conn, $six_months);
     $rowsix = mysqli_num_rows($runsix);
     // $unsoldCard = $rowTHree + $rowsix
-    $sql_2 = "SELECT * FROM `membership_card`";
+    $sql_2 = "SELECT * FROM `membership_card` WHERE `assign` != 1 and `asign_count` !=1";
     $run = mysqli_query($conn, $sql_2);
 
 
@@ -315,6 +315,19 @@
 
                  <div class="fields">
                      <div class="input-field">
+                        <!-- <?php
+                         error_reporting(E_ALL ^ E_WARNING);
+                         $sql="SELECT * FROM `membership_card` WHERE `id`=(SELECT MAX(`id`) FROM  `membership_card`) AND `asign_count`='0'";
+                         $run=mysqli_query($conn,$sql);
+                         $fetch=mysqli_fetch_assoc($run);
+                         if ($fetch['membership_card']==NULL) {
+                             echo '0';
+                         } else {
+                             # code...
+                             echo $fetch['membership_card'];
+                         }
+                         
+                        ?> -->
                          <label>Enter Card</label>
                          <input type="text" placeholder="Enter your Cards Assign" name="membership_card" required>
                      </div>
@@ -324,12 +337,16 @@
                          <input type="text" placeholder="Enter your name" name="franchise_name" required>
                      </div>
                      <div class="input-field">
+                         <label>Quantity</label>
+                         <input type="text" placeholder="Enter number Quantity" name="quantity" required>
+                     </div>
+                     <!-- <div class="input-field">
                          <label>Membership Duration</label>
                          <select name="exiry_date">
                              <option value="3 months">3 months</option>
                              <option value="6 months">6 months</option>
                          </select>
-                     </div>
+                     </div> -->
                  </div>
 
 
