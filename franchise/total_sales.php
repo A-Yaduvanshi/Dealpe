@@ -4,6 +4,8 @@ session_start();
 // echo $_SESSION['sess_user'];
 $sql = "SELECT * FROM `sales` where `frachise_id`='" . $_SESSION['sess_user'] . "'";
 $query = mysqli_query($conn, $sql);
+$sql_2 = "SELECT  SUM(card_price) FROM `membership_card` WHERE `franchise_id`='" . $_SESSION['sess_user'] . "' and `customer_select`='1'";
+$run = mysqli_query($conn, $sql_2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -131,7 +133,7 @@ $query = mysqli_query($conn, $sql);
 
     ._table :is(th, td) {
         border: 1px solid #0002;
-        padding: 8px 25px;
+        padding: 8px 10px;
     }
 
     ._table th {
@@ -168,10 +170,11 @@ $query = mysqli_query($conn, $sql);
             <div>
                 <nav aria-label="breadcrumb">
                     <img style="height: 150px;width: 150px;" src="../dealpaylogo.jpg">
-                    <a href="../franchise/franchisedashboard.php"> <button style="background-color: #6c63ff;color:white;padding:10px; border-radius: 10px;">Go Home</button></a>
+                   
                 </nav>
             </div>
             <h2 style="color:#951010;font-weight: bold;" class="text-center">Sales Executive</h2>
+            <a href="../franchise/franchisedashboard.php"> <button style="background-color: #6c63ff;color:white;padding:10px;  border-radius: 10px;">Go Home</button></a>
             <a href="./salesregis.html" class="btn btn-primary button " style="margin-right:40px;">Add New Sales</a>
         </div>
     </div>

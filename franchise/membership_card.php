@@ -1,7 +1,7 @@
 <?php
 include '../api/connection.php';
 session_start();
-$sql = "SELECT * FROM `membership_card` WHERE `assign_name`='" .$_SESSION['owener_Name'] . "'";
+$sql = "SELECT * FROM `membership_card` WHERE `assign_name`='" .$_SESSION['Business_Name'] . "'";
 $query = mysqli_query($conn, $sql);
 ?>
 
@@ -172,7 +172,7 @@ $query = mysqli_query($conn, $sql);
                     <!-- <th>id</th> -->
                     <th>Membership Card Number</th>
                     <th>Membership Price</th>
-                    <th>Membership Date</th>
+                    <th>validity_month</th>
                     <th>Sale Person </th>
                     <th>Remove Data</th>
                 </tr>
@@ -183,7 +183,7 @@ $query = mysqli_query($conn, $sql);
                         <!-- <td><?php echo $row['id']; ?></td> -->
                         <td><?php echo $row['membership_card']; ?></td>
                         <td><?php echo $row['membership_price']; ?></td>
-                        <td><?php echo $row['expiry_date']; ?></td>
+                        <td><?php echo $row['validity_date']; ?></td>
                         <td><?php echo $row['sales_person']; ?></td>
                         <td> <a href="./removesale.php?id=<?php echo $res[0]; ?>"><Button class="btn btn-block bg-danger text-white">
                                     Remove</Button></a></td>

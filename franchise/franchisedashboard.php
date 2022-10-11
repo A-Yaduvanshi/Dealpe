@@ -634,7 +634,7 @@ if (!isset($_SESSION['Business_Name'])) {
         <a style="text-decoration-line: none;" href="../api/franchiselogout.php">
           <div class="profile-details">
             <!-- <img src="./image/pic1.png" alt=""> -->
-            <span class="admin_name"><?php echo $_SESSION['owener_Name'] ?></span>
+            <span class="admin_name"><?php echo $_SESSION['Business_Name'] ?></span>
             <button onclick="myFunction()" style="width: 100px; height:40px; border-radius:10px; margin-left:5px; background-color:transparent; color:gray; font-size: 15px;"> Sign Out</button>
           </div>
         </a>
@@ -664,7 +664,7 @@ if (!isset($_SESSION['Business_Name'])) {
               $sql_4 = "SELECT * FROM `franchisesignup` WHERE `id` = '" . $_SESSION['sess_user'] . "'";
               $query_4 = mysqli_query($conn, $sql_4);
               $fetchBussinessName = mysqli_fetch_assoc($query_4);
-              $bussiness = $fetchBussinessName['owner_name'];
+              $bussiness = $fetchBussinessName['Business_Name'];
               // echo $bussiness;
               $sql = "SELECT COUNT(*) as total_pet FROM `membership_card` WHERE `assign`='1' AND`assign_name`='" . $bussiness . "' AND `asign_count`='1' ";
               $run = mysqli_query($conn, $sql);
@@ -717,7 +717,7 @@ if (!isset($_SESSION['Business_Name'])) {
               $fetch = mysqli_fetch_assoc($querys);
               $sales_n = $fetch['Customer_name'];
               // echo $sales_n;
-              $sql = "SELECT  SUM(card_price) FROM `membership_card` WHERE `franchise_id`='" . $_SESSION['sess_user'] . "' and `customer_select`='1'";
+              $sql = "SELECT  SUM(membership_price) FROM `membership_card` WHERE `franchise_id`='" . $_SESSION['sess_user'] . "' and `customer_select`='1'";
               $run = mysqli_query($conn, $sql);
               // echo $_SESSION['sess_user'];
               $data = mysqli_fetch_assoc($run);
@@ -726,6 +726,48 @@ if (!isset($_SESSION['Business_Name'])) {
               // $data_2 = mysqli_fetch_assoc($run_2);
               ?>
               <div class="box-topic">Revenue</div>
+              <div class="number"><?php
+                                  if ($data['SUM(membership_price)'] > 0) {
+                                    # code...
+                                    echo $data['SUM(membership_price)'];
+                                  } else {
+                                    echo 0;
+                                  }
+                                  ?></div>
+              <div class="indicator">
+                <!-- <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span> -->
+              </div>
+            </div>
+            <!-- <i class='bx bxs-cart-add cart two'></i> -->
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <!-- <?php include "../api/connection.php";
+                    $sql = "SELECT  SUM(membership_price) FROM `membership_card` WHERE `assign_name`='" . $_SESSION['owener_Name'] . "' and `sale_count`=1";
+                    $run = mysqli_query($conn, $sql);
+                    $data = mysqli_fetch_assoc($run);
+                    $sql_2 = "SELECT * FROM `franchisesignup` WHERE `Business_email`='" . $_SESSION['sess_email'] . "'";
+                    $run_2 = mysqli_query($conn, $sql_2);
+                    $data_2 = mysqli_fetch_assoc($run_2);
+                    ?> -->
+              <?php include "../api/connection.php";
+
+
+              $sales_name = "SELECT * FROM `sales` WHERE `frachise_id`='" . $_SESSION['sess_user'] . "'";
+              $querys = mysqli_query($conn, $sales_name);
+              $fetch = mysqli_fetch_assoc($querys);
+              $sales_n = $fetch['Customer_name'];
+              // echo $sales_n;
+              $sql = "SELECT  SUM(card_price) FROM `membership_card` WHERE `franchise_id`='" . $_SESSION['sess_user'] . "' and `customer_select`='1'";
+              $run = mysqli_query($conn, $sql);
+              // echo $_SESSION['sess_user'];
+              $data = mysqli_fetch_assoc($run);
+              // $sql_2 = "SELECT * FROM `sales` WHERE `Customer_name`='" . $_SESSION['customer_name'] . "'";
+              // $run_2 = mysqli_query($conn, $sql_2);
+              // $data_2 = mysqli_fetch_assoc($run_2);
+              ?>
+              <div class="box-topic">Total Sales Revenue</div>
               <div class="number"><?php
                                   if ($data['SUM(card_price)'] > 0) {
                                     # code...

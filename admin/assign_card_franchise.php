@@ -260,7 +260,7 @@ $run = mysqli_query($conn, $sql_2);
 
                         <?php while ($row = mysqli_fetch_assoc($query)) { ?>
 
-                            <option><?php echo $row['owner_name'] ?></option>
+                            <option><?php echo $row['Business_Name'] ?></option>
                         <?php } ?>
                     </datalist>
 
@@ -296,7 +296,7 @@ $run = mysqli_query($conn, $sql_2);
                     <h5><?php echo $rowTHree; ?></h5>
                      -->
 
-                    <h5>Total Cards</h5>
+                    <h5>Total Available Cards</h5>
                     <h5><?php echo $rowsix; ?></h5>
 
 

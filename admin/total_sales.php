@@ -4,224 +4,299 @@ $sql = "SELECT * FROM `sales`";
 $query = mysqli_query($conn,$sql);
 ?>
 
+
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html >
+  <head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-    <title>CSS Keyboard</title>
-    <link rel="stylesheet" href="style.css">
-    <link href='https://fonts.googleapis.com/css?family=Libre Barcode 39' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>DealPe</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="Cache-control" content="no-cache">
+   
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<style>
-/*body {
-    font-family: 'Libre Barcode 39';font-size: 22px;
-}*/
-</style>
-</head>
-<style>
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
+    <!-- DashForge CSS -->
+    <link rel="stylesheet" href="https://newui.campus365.io/backend/assets-new/css/dashforge.css">
+    <link rel="stylesheet" href="https://newui.campus365.io/backend/lib/bootstrap-tagsinput/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="https://newui.campus365.io/backend/assets-new/css/dashforge.dashboard.css">
+    <link rel="stylesheet" href="https://newui.campus365.io/backend/assets-new/css/dashforge.mail.css">
+    <link rel="stylesheet" href="https://newui.campus365.io/backend/assets-new/css/dashforge.filemgr.css">
+    <link rel="stylesheet" href="https://newui.campus365.io/backend/assets-new/css/dashforge.demo.css">
+    <link rel="stylesheet" href="https://newui.campus365.io/backend/assets-new/css/dashforge.profile.css">
+    <link rel="stylesheet" href="https://newui.campus365.io/backend/assets-new/css/dashforge.calendar.css">
+    <link rel="stylesheet" href="https://newui.campus365.io/backend/plugins/colorpicker/bootstrap-colorpicker.css">
+  
+    <script type="text/javascript">
+        var baseurl = "https://newui.campus365.io/";
+    </script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and me/
+        [if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    
+    <!--print table mobile support-->
+    <script src="https://newui.campus365.io/backend/lib/jquery/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.5/pdfobject.min.js" integrity="sha512-K4UtqDEi6MR5oZo0YJieEqqsPMsrWa9rGDWMK2ygySdRQ+DtwmuBXAllehaopjKpbxrmXmeBo77vjA2ylTYhRA==" crossorigin="anonymous"></script>
+    <script src="https://newui.campus365.io/backend/dist/js/moment.min.js"></script>
+    <script src="https://newui.campus365.io/backend/datepicker/date.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://newui.campus365.io/backend/lib/imageviewer/baguetteBox.min.css" />
 
-body {
-    background-color: #efefef;
-    padding: 25px;
-}
+    <!-- Timetable CSS Files -->
+    <link rel="stylesheet" href="https://newui.campus365.io/backend/assets-timetable/css/magnific-popup.css">
+    <link rel="stylesheet" href="https://newui.campus365.io/backend/assets-timetable/css/timetable.css">
 
-.container {
-    max-width: 1500px;
-    width: 100%;
-    height: 100vh;
-    margin: 25px auto;
-    padding: 15px;
-    background-color: #fff;
-    box-shadow: 0 2px 20px #0001, 0 1px 6px #0001;
-    border-radius: 5px;
-    overflow-x: auto;
-}
+    <!-------------- CSS Files for example -------------->
+    <!-- <link rel="stylesheet" href="https://newui.campus365.io/backend/assets-timetable/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://newui.campus365.io/backend/assets-timetable/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://newui.campus365.io/backend/assets-timetable/css/style.css"> -->
 
-.form_control {
-    border: 1px solid #0002;
-    background-color: transparent;
-    outline: none;
-    padding: 8px 12px;
-    width: 60%;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-.form_control::placeholder {
-    color: inherit;
-    opacity: 0.5;
-}
-
-.form_control:is(:hover, :focus) {
-    box-shadow: inset 0 1px 6px #0002;
-    border-radius: 5px;
-}
-
-.success {
-    background-color: #24b96f !important;
-}
-
-.warning {
-    background-color: #ebba33 !important;
-}
-
-.primary {
-    background-color: #259dff !important;
-}
-
-.secondery {
-    background-color: #00bcd4 !important;
-}
-
-.danger {
-    background-color: #ff5722 !important;
-}
-
-
-.action_btn {
-    display: inline-flex;
-    align-items: center;
-}
-
-.action_btn>* {
-    border: none;
-    outline: none;
-    color: #fff;
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 14px;
-    position: relative;
-    transition: 0.3s ease-in-out;
-}
-
-.action_btn>*+* {
-    border-left: 1px solid #0003;
-}
-
-.action_btn>*:hover {
-    filter: hue-rotate(-20deg) brightness(0.97);
-    transform: scale(1.05);
-    border-color: transparent;
-    box-shadow: 0 2px 10px #0004;
-    border-radius: 4px;
-}
-
-.action_btn>*:active {
-    transform: scale(1);
-    box-shadow: 0 2px 5px #0004;
-}
-
-._table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-._table :is(th, td) {
-    border: 1px solid #0002;
-    padding: 8px 25px;
-}
-
-._table th {
-    position: relative;
-    user-select: none;
-}
-
-._table th:hover {
-    background-color: #0001;
-    cursor: pointer;
-}
-
-._table th::after {
-    content: '\25b4';
-    position: absolute;
-    right: 10px;
-    font-size: inherit;
-    transform-origin: center;
-    transform: rotate(180deg);
-}
-
-._table th.asc {
-    background-color: #0001;
-}
-
-._table th.asc::after {
-    transform: rotate(0deg);
-}
-</style>
-<body>
-    <div class="containerr  bg-white text-white">
-        <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
-            <div>
-                <nav aria-label="breadcrumb">
-                    <img style="height: 150px;width: 150px;" src="../dealpaylogo.jpg">
-                    <a href="../admin/dashboard.php"> <button style="background-color: #6c63ff;color:white;padding:10px; border-radius: 10px;">Go Home</button></a>
-                
-                </nav>
-
+  </head>
+  <body class="d-flex flex-column h-100p" onload="FreshworksWidget('hide', 'launcher');">
+  
+    <!-- navbar --><div class="content content-fixed">
+        <div class="container pd-x-0">
+        <a href="../admin/dashboard.php"> <button style="background-color: #6c63ff;color:white;float: right;padding:8px; border-radius: 10px; margin-left:10px; margin-top:5px">Go Home</button></a>
+            <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+                <div>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                            <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Inventory</li>
+                        </ol>
+                    </nav>
+                    <h4 style="font-weight: bold;" class="mg-b-0 tx-spacing--1">Sales Executive Report</h4>
+                </div>
+                <!-- <div class="d-md-block">
+              <a href="./frenchregis.html"><button class="btn btn-sm pd-x-15 btn-primary btn-uppercase mg-l-5" "> Add NEW</button>
+               </a> </div> -->
             </div>
- <h2 style="color:#951010;font-weight: bold;" class="text-center">Sales Executive</h2>
-            <a  href="./salesregis.html" class="btn btn-primary button " style="margin-right:40px;">Add Sales Executive</a>
         </div>
-        <!-- <a href="../admin/dashboard.php"> <button style="background-color: #6c63ff;color:white;;padding:8px;float:right; border-radius: 10px; margin-left:10px; margin-top:5px;margin-bottom:5px">Go Home</button></a>      -->
-    </div>
-    </div>
-    <div class="container">
-        <!-- <input type="search" oninput="filter_table(this, 'table_filter')" class="form_control"
-               placeholder="Filter This Table..."> -->
-        <table class="_table table_sort">
-          <thead>
-            <tr>
+        <!--BREADCRUM CONTAINER -->
+        <!-- Main content -->
+        <div class="container pd-x-0">
+            <div data-label="Stock Details" class="df-example demo-table mg-t-25">
+                <table class="table tx-13" id="example1">
+                    <thead>
+                    <tr>
               <th>SL</th>
-              <th>Name</th>
+              <th>NAME</th>
               <th>Gender</th>
               <th>Phone</th>
-              <th>Address</th>
-              <th>Occupation</th>
               <th>Email</th>
+              <th>PASSWORD</th>
+              <th>Address</th>
+              <th>STATE</th>
+              <th>DISTRICT</th>
+              <th>PIN CODE</th>
+              <th>Franchise_id</th>
+              <!-- <th>Franchise</th> -->
               <th>Remove</th>
               
             </tr>
           </thead>
           <tbody id="table_filter">
-            <?php while($row = mysqli_fetch_row($query)){ ?>
+            <?php while($row = mysqli_fetch_assoc($query)){ ?>
             <tr>
-              <td><?php echo $row['0']; ?></td>
-              <td><?php echo $row['2']; ?></td>
-              <td>
-                <?php echo $row['6']; ?>
-                <!-- <h5 style="font-family: 'Libre Barcode 39';font-size: 50px;">Deepak</h5> -->
-            </td>
-              <td><?php echo $row['13']; ?></td>
-              <td><?php echo $row['8']; ?></td>
-              <td><?php echo $row['7']; ?></td>
-              <td><?php echo $row['4']; ?></td>
+            <td><?php echo $row['id']; ?></td>
+             <td><?php echo $row['Customer_name']; ?></td>
+              <td><?php echo $row['gender']; ?></td>
+              <td><?php echo $row['mobile_no']; ?></td>
+              <td><?php echo $row['Customer_email']; ?></td>
+              <td><?php echo $row['Password']; ?></td>
+              <td><?php echo $row['Address']; ?></td>
+              <td><?php echo $row['state']; ?></td>
+              <td><?php echo $row['Distict']; ?></td>
+              <td><?php echo $row['pin_code']; ?></td>
+              <td><?php echo $row['frachise_id']; ?></td>
+              <!-- <td><?php echo $row['Address']; ?></td> -->
               <td>
                 <a href="./deleteSale.php?id=<?php echo $row['0']; ?>">
                   <Button  class="btn btn-block bg-warning">Remove</Button>
               </a>
               </td>
-              
             </tr>
             <?php }  ?>
-        </tbody>
-        </table>
-      </div>
-      
-    
-    <!-- HTML code goes here -->
-    <script src="all.js"></script>
+        </tbody>   
+    </table>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+  $(function(){
+  'use strict'
+      $('.select2').select2({
+          searchInputPlaceholder: 'Search options'
+      });
+  });
+
+  $(document).ready(function () {
+      var table = $('#example3').DataTable({
+          pageLength: 50,
+          dom: 'Blfrtip',
+          bSort: false,
+          stateSave: true,
+          buttons: [
+          {
+              extend: 'excelHtml5',
+              footer: true,
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'pdfHtml5',
+              title: $('.download_label').html(),
+              layout: 'headerLineOnly',
+              pageSize: 'A4', //A3 , A5 , A6 , legal , letter
+              orientation: 'portrait', //portrait
+              layout: {
+                  fillColor: function (rowIndex, node, columnIndex) {
+                      return (rowIndex === 0) ? '#c2dec2' : null;
+                  }
+              },
+              customize: function(doc) {
+                  
+                  for (var row = 0; row < doc.content[1].table.headerRows; row++) {
+                      var header = doc.content[1].table.body[row];
+                      for (var col = 0; col < header.length; col++) {
+                      header[col].fillColor = '#6ebce2';
+                      }
+                  }
+                  //Create a date string that we use in the footer. Format is dd-mm-yyyy
+                  var now = new Date();
+                  var jsDate = now.getDate()+'-'+(now.getMonth()+1)+'-'+now.getFullYear();
+                  //pageMargins [left, top, right, bottom] 
+                  doc.pageMargins = [20,60,20,30];
+                  // Set the font size fot the entire document
+                  doc.defaultStyle.fontSize = 9;
+                  // Set the fontsize for the table header
+                  doc.styles.tableHeader.fontSize = 9;
+                  // Create a footer object with 2 columns
+                  // Left side: report creation date
+                  // Right side: current page and total pages
+                  doc['footer']=(function(page, pages) {
+                      return {
+                          columns: [
+                          {
+                              alignment: 'left',
+                              text: ['Created on: ', { text: jsDate.toString() }]
+                          },
+                          {
+                              alignment: 'right',
+                              text: ['page ', { text: page.toString() },  ' of ', { text: pages.toString() }]
+                          }
+                          ],
+                          margin: 20
+                      }
+                  });
+
+                  // Change dataTable layout (Table styling)
+                  // To use predefined layouts uncomment the line below and comment the custom lines below
+                  // doc.content[0].layout = 'lightHorizontalLines'; // noBorders , headerLineOnly
+                  var objLayout = {};
+                  objLayout['hLineWidth'] = function(i) { return .5; };
+                  objLayout['vLineWidth'] = function(i) { return .5; };
+                  objLayout['hLineColor'] = function(i) { return '#aaa'; };
+                  objLayout['vLineColor'] = function(i) { return '#aaa'; };
+                  objLayout['paddingLeft'] = function(i) { return 4; };
+                  objLayout['paddingRight'] = function(i) { return 4; };
+                  doc.content[0].layout = objLayout;
+              },
+              exportOptions: {
+                  columns: ':visible',
+                  search: 'applied',
+                  order: 'applied'
+                  
+              }
+              
+          },
+          {
+              extend: 'copy',
+              footer: false,
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+              {
+                  extend: 'colvis',
+                  text: '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>',
+                  titleAttr: 'Columns',
+                  postfixButtons: [ 'colvisRestore' ]
+              }        
+          ],
+          columnDefs: [
+              {
+                  targets: 6,
+                  visible: false
+              }
+          ],
+          language: {
+              searchPlaceholder: 'Search...',
+              sSearch: '',
+              lengthMenu: '',
+          }
+      });
+  });
+   
+</script><script src="https://newui.campus365.io/backend/assets-timetable/js/jquery.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/jquery/jquery.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/jqueryui/jquery-ui.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/jquery-steps/build/jquery.steps.min.js"></script>
+<script src="https://newui.campus365.io/backend/dist/js/moment.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/fullcalendar/fullcalendar.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/feather-icons/feather.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/prismjs/prism.js"></script>
+<script src="https://newui.campus365.io/backend/lib/parsleyjs/parsley.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/jquery.flot/jquery.flot.js"></script>
+<script src="https://newui.campus365.io/backend/lib/jquery.flot/jquery.flot.stack.js"></script>
+<script src="https://newui.campus365.io/backend/lib/jquery.flot/jquery.flot.resize.js"></script>
+<script src="https://newui.campus365.io/backend/lib/chart.js/Chart.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/jqvmap/jquery.vmap.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/jqvmap/maps/jquery.vmap.usa.js"></script>
+<script src="https://newui.campus365.io/backend/lib/peity/jquery.peity.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/select2/js/select2.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/quill/quill.min.js"></script>
+<script src="https://newui.campus365.io/backend/assets-new/js/dashforge.sampledata.js"></script>
+<script src="https://newui.campus365.io/backend/assets-new/js/dashforge.mail.js"></script>
+<script src="https://newui.campus365.io/backend/lib/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
+<link href="https://newui.campus365.io/backend/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet"/>
+<link href="https://newui.campus365.io/backend/assets-new/css/dataTables.colVis.min.css" rel="stylesheet"/>
+<script src="https://newui.campus365.io/backend/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="https://newui.campus365.io/backend/plugins/colorpicker/bootstrap-colorpicker.js"></script>
+<script src="https://newui.campus365.io/backend/lib/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/typeahead.js/typeahead.bundle.min.js"></script>
+<script src="https://newui.campus365.io/backend/lib/js-cookie/js.cookie.js"></script>
+<script src="https://newui.campus365.io/backend/assets-new/js/dashforge.js"></script>
+<script src="https://newui.campus365.io/backend/assets-new/js/calendar-events.js"></script>
+<script src="https://newui.campus365.io/backend/assets-new/js/xlsx.full.min.js"></script>
+<script type="text/javascript" src="https://newui.campus365.io/backend/custom/campus365-custom-scripts.js"></script>
+<script type="text/javascript" src="https://newui.campus365.io/backend/lib/datatables.net/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://newui.campus365.io/backend/lib/datatables.net/js/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://newui.campus365.io/backend/lib/datatables.net/js/jszip.min.js"></script>
+<script type="text/javascript" src="https://newui.campus365.io/backend/lib/datatables.net/js/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://newui.campus365.io/backend/lib/datatables.net/js/buttons.colVis.min.js"></script>
+<script type="text/javascript" src="https://newui.campus365.io/backend/lib/datatables.net/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://newui.campus365.io/backend/lib/datatables.net/js/dataTables.fixedColumns.min.js"></script>
+<script type="text/javascript" src="https://newui.campus365.io/backend/dist/js/bootstrap-select.min.js"></script>
+<script src="https://newui.campus365.io/backend/plugins/tinymce/tinymce.min.js"></script>
+<!-- Timetable JS Files -->
+
+<script src="https://newui.campus365.io/backend/assets-timetable/js/jquery.magnific-popup.js"></script>
+<script src="https://newui.campus365.io/backend/assets-timetable/js/timetable.js"></script>
+<!--------------------------------------------------->
+<script src="https://newui.campus365.io/backend/assets-new/js/anime.min.js"></script>
+
 </body>
-</html>
+</html> 

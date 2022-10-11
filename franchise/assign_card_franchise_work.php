@@ -26,7 +26,7 @@ $query_3 = mysqli_query($conn, $sql_3);
 $sql_4 = "SELECT * FROM `franchisesignup` WHERE `id` = '" . $_SESSION['sess_user'] . "'";
 $query_4 = mysqli_query($conn, $sql_4);
 $fetchBussinessName = mysqli_fetch_assoc($query_4);
-$bussiness = $fetchBussinessName['owner_name'];
+$bussiness = $fetchBussinessName['Business_Name'];
 $three_months = "SELECT COUNT(*) as total_pet FROM `membership_card` WHERE `assign`='1' AND`assign_name`='" . $bussiness . "' AND `asign_count`='1' ";
 $runthree = mysqli_query($conn, $three_months);
 $rowTHree = mysqli_fetch_assoc($runthree);

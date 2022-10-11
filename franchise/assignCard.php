@@ -18,7 +18,7 @@ $quantity = $_GET['quantity'];
 echo $salesName;
 for ($i = 1; $i <= $quantity; $i++) {
 
-	$sql = "SELECT * FROM `membership_card` WHERE `sales_select`!=1 and `assign`='1' and`assign_name` = '" . $_SESSION['owener_Name'] . "'";
+	$sql = "SELECT * FROM `membership_card` WHERE `sales_select`!=1 and `assign`='1' and`assign_name` = '" . $_SESSION['Business_Name'] . "'";
 	// $sql_2 = "SELECT * FROM `membership_card` WHERE `asign_count`!=1 and `assign`=and `assign_name` = '".$_SESSION['Business_Name']."'";
 	$query = mysqli_query($conn, $sql);
 	while ($rowCheck = mysqli_fetch_array($query)) {

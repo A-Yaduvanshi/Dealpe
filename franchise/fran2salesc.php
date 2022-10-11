@@ -1,11 +1,16 @@
 <?php
-include "../api/connection.php";
+include '../api/connection.php';
 session_start();
-
-$sql = "SELECT * FROM `sales` WHERE `frachise_id`='" . $_SESSION['sess_user'] . "' and `commission`='0'";
+// echo $_SESSION['sess_user'];
+$sql_3 = "SELECT  * FROM `membership_card` WHERE `franchise_id`='" . $_SESSION['sess_user'] . "' and `customer_select`='1'";
+$run_2 = mysqli_query($conn, $sql_3);
+$fetch_2=mysqli_fetch_assoc($run_2);
+$s_id= $fetch_2['sale_id'];
+$sql = "SELECT * FROM `sales` where `frachise_id`='" . $_SESSION['sess_user'] . "' and `id`='".$s_id."'";
 $query = mysqli_query($conn, $sql);
 
-
+$sql_2 = "SELECT  SUM(card_price) FROM `membership_card` WHERE `franchise_id`='" . $_SESSION['sess_user'] . "' and `customer_select`='1'";
+$run = mysqli_query($conn, $sql_2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,282 +19,223 @@ $query = mysqli_query($conn, $sql);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!----======== CSS ======== -->
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <title>Sales Executive Commission</title>
     <link rel="stylesheet" href="style.css">
-    <title>Sales Commission</title>
-    <!----===== Iconscout CSS ===== -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
-    <!--<title>Responsive Regisration Form </title>-->
+    <link href='https://fonts.googleapis.com/css?family=Libre Barcode 39' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <style>
+        /*body {
+    font-family: 'Libre Barcode 39';font-size: 22px;
+}*/
+    </style>
 </head>
 <style>
-    /* ===== Google Font Import - Poppins ===== */
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
-
     * {
-        margin: 0;
-        padding: 0;
         box-sizing: border-box;
-        font-family: 'Poppins', sans-serif;
+        padding: 0;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #4070f4;
+        background-color: #efefef;
+        padding: 25px;
     }
 
     .container {
-        position: relative;
-        max-width: 900px;
+        max-width: 1500px;
         width: 100%;
-        border-radius: 6px;
-        padding: 30px;
-        margin: 0 15px;
+        height: 100vh;
+        margin: 25px auto;
+        padding: 15px;
         background-color: #fff;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .container header {
-        position: relative;
-        font-size: 20px;
-        font-weight: 600;
-        color: #333;
-    }
-
-    .container header::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -2px;
-        height: 3px;
-        width: 27px;
-        border-radius: 8px;
-        /* background-color: #4070f4; */
-    }
-
-    .container form {
-        position: relative;
-        margin-top: 16px;
-        min-height: 200px;
-        background-color: #fff;
-        overflow: hidden;
-    }
-
-    .container form .form {
-        position: absolute;
-        background-color: #fff;
-        transition: 0.3s ease;
-    }
-
-    .container form .form.second {
-        opacity: 0;
-        pointer-events: none;
-        transform: translateX(100%);
-    }
-
-    form.secActive .form.second {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateX(0);
-    }
-
-    form.secActive .form.first {
-        opacity: 0;
-        pointer-events: none;
-        transform: translateX(-100%);
-    }
-
-    .container form .title {
-        display: block;
-        margin-bottom: 8px;
-        font-size: 16px;
-        font-weight: 500;
-        margin: 6px 0;
-        color: #333;
-    }
-
-    .container form .fields {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-
-    form .fields .input-field {
-        display: flex;
-        width: calc(100% / 3 - 15px);
-        flex-direction: column;
-        margin: 4px 0;
-    }
-
-    .input-field label {
-        font-size: 12px;
-        font-weight: 500;
-        color: #2e2e2e;
-    }
-
-    .input-field input,
-    select {
-        outline: none;
-        font-size: 14px;
-        font-weight: 400;
-        color: #333;
+        box-shadow: 0 2px 20px #0001, 0 1px 6px #0001;
         border-radius: 5px;
-        border: 1px solid #aaa;
-        padding: 0 15px;
-        height: 42px;
-        margin: 8px 0;
+        overflow-x: auto;
     }
 
-    .input-field input :focus,
-    .input-field select:focus {
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
-    }
-
-    .input-field select,
-    .input-field input[type="date"] {
-        color: #707070;
-    }
-
-    .input-field input[type="date"]:valid {
+    .form_control {
+        border: 1px solid #0002;
+        background-color: transparent;
+        outline: none;
+        padding: 8px 12px;
+        width: 60%;
         color: #333;
+        margin-bottom: 15px;
     }
 
-    .container form button,
-    .backBtn {
-        display: flex;
+    .form_control::placeholder {
+        color: inherit;
+        opacity: 0.5;
+    }
+
+    .form_control:is(:hover, :focus) {
+        box-shadow: inset 0 1px 6px #0002;
+        border-radius: 5px;
+    }
+
+    .success {
+        background-color: #24b96f !important;
+    }
+
+    .warning {
+        background-color: #ebba33 !important;
+    }
+
+    .primary {
+        background-color: #259dff !important;
+    }
+
+    .secondery {
+        background-color: #00bcd4 !important;
+    }
+
+    .danger {
+        background-color: #ff5722 !important;
+    }
+
+    .action_btn {
+        display: inline-flex;
         align-items: center;
-        justify-content: center;
-        height: 45px;
-        max-width: 200px;
-        width: 100%;
+    }
+
+    .action_btn>* {
         border: none;
         outline: none;
         color: #fff;
-        border-radius: 5px;
-        margin: 25px 0;
-        background-color: #4070f4;
-        transition: all 0.3s linear;
+        text-decoration: none;
+        display: inline-block;
+        padding: 8px 14px;
+        position: relative;
+        transition: 0.3s ease-in-out;
+    }
+
+    .action_btn>*+* {
+        border-left: 1px solid #0003;
+    }
+
+    .action_btn>*:hover {
+        filter: hue-rotate(-20deg) brightness(0.97);
+        transform: scale(1.05);
+        border-color: transparent;
+        box-shadow: 0 2px 10px #0004;
+        border-radius: 4px;
+    }
+
+    .action_btn>*:active {
+        transform: scale(1);
+        box-shadow: 0 2px 5px #0004;
+    }
+
+    ._table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    ._table :is(th, td) {
+        border: 1px solid #0002;
+        padding: 8px 10px;
+    }
+
+    ._table th {
+        position: relative;
+        user-select: none;
+    }
+
+    ._table th:hover {
+        background-color: #0001;
         cursor: pointer;
     }
 
-    .container form .btnText {
-        font-size: 14px;
-        font-weight: 400;
-    }
-
-    form button:hover {
-        background-color: #265df2;
-    }
-
-    form button i,
-    form .backBtn i {
-        margin: 0 6px;
-    }
-
-    form .backBtn i {
+    ._table th::after {
+        content: '\25b4';
+        position: absolute;
+        right: 10px;
+        font-size: inherit;
+        transform-origin: center;
         transform: rotate(180deg);
     }
 
-    form .buttons {
-        display: flex;
-        align-items: center;
+    ._table th.asc {
+        background-color: #0001;
     }
 
-    form .buttons button,
-    .backBtn {
-        margin-right: 14px;
-    }
-
-    @media (max-width: 750px) {
-        .container form {
-            overflow-y: scroll;
-        }
-
-        .container form::-webkit-scrollbar {
-            display: none;
-        }
-
-        form .fields .input-field {
-            width: calc(100% / 2 - 15px);
-        }
-    }
-
-    @media (max-width: 550px) {
-        form .fields .input-field {
-            width: 100%;
-        }
+    ._table th.asc::after {
+        transform: rotate(0deg);
     }
 </style>
 
 <body>
-    <div class="container">
-        <header style="font-weight: bold; color:brown;text-align:
-        center;text-decoration:underline;font-size:30px;">Sales Commission</header>
-        <!-- <img   src="man.jpg" class="rounded float-end" style="height:
-         200px;width:200px;padding: ;" alt="..."> -->
-        <!-- <img style="height: 200px;width:200px; margin-top: 10px;
-        "src="man.jpg"> -->
-        <a href="../franchise/franchisedashboard.php"> <button style="background-color: #6c63ff;color:white;float: right;padding:10px; border-radius: 10px;">Go Home</button></a>
-        <div class="container-fluid" style="margin-top:50px;">
-
-            <div class="row">
-
-                <div class="col-sm-6 " style="padding: 10px;font-weight:bold;text-align:
-             center;">
-
-                    <h5>Available sales</h5>
-
-
-                    <!-- <input list="list1"> -->
-                    <form action="../franchise/fran2salescapi.php" method="get">
-                        <select style="width:200px; background-color: transparent;" name="customer_name">
-
-                            <?php while ($row = mysqli_fetch_assoc($query)) { ?>
-
-                                <option><?php echo $row['Customer_name'] ?></option>
-                            <?php } ?>
-                        </select>
-
-
-
-
-
-                </div>
-
-
-                <div class="col-sm-6" style="padding: 10px;">
-
-                    <h5 class="pb-3">Commission</h5>
-                    <input style="padding:10px;width: 250px;border-radius: 10px;" type="text " placeholder="enter your commission" name="commission">
-                    <br>
-                    <button class="nextBtn" style="text-align: center;margin-top: 20px;width: 200px;margin-right: 10px;background-color:transparent; border-radius:10px;">
-
-                        <span class="btn text-bg-danger">Submit</span>
-                        <!-- <i class="uil uil-navigator"></i> -->
-                    </button>
-
-                </div>
-
-
+    <div class="containerr  bg-white text-white">
+        <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <img style="height: 150px;width: 150px;" src="../dealpaylogo.jpg">
+                   
+                </nav>
             </div>
-
-            </form>
-
-
+            <h2 style="color:#951010;font-weight: bold;" class="text-center">Sales Executive Commission</h2>
+            <a href="../franchise/franchisedashboard.php"> <button style="background-color: #6c63ff;color:white;padding:10px;  border-radius: 10px;">Go Home</button></a>
+            <!-- <a href="./salesregis.html" class="btn btn-primary button " style="margin-right:40px;">Add New Sales</a> -->
         </div>
-
-
-
-
-
     </div>
+    </div>
+    <div class="container">
+        <input type="search" oninput="filter_table(this, 'table_filter')" class="form_control" placeholder="Filter This Table...">
+        <table class="_table table_sort">
+            <thead>
+                <tr>
+                    <th>SALES EXECUTIVE ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>PASSWORD</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>STATE</th>
+                    <th>DISTRICT</th>
+                    <th>PIN CODE</th>
+                    <th>Phone</th>
 
-    <!-- <scr src="script.js"></scr/ipt> -->
+                    <th>Total Commission Earn</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody id="table_filter">
+                <?php while (($row = mysqli_fetch_row($query))&&$data = mysqli_fetch_assoc($run)) { ?>
+                    <tr>
+                        <td><?php echo $row['1']; ?></td>
+                        <td><?php echo $row['2']; ?></td>
+                        <td><?php echo $row['4']; ?></td>
+                        <td><?php echo $row['5']; ?></td>
+                        <td>
+                            <?php echo $row['6']; ?>
+                            <!-- <h5 style="font-family: 'Libre Barcode 39';font-size: 50px;">Deepak</h5> -->
+                        </td>
+
+                        <td><?php echo $row['8']; ?></td>
+
+                        <!-- <td><?php echo $row['7']; ?></td>   -->
+                        <td><?php echo $row['11']; ?></td>
+                        <td><?php echo $row['12']; ?></td>
+                        <td><?php echo $row['14']; ?></td>
+                        <td><?php echo $row['13']; ?></td>
+                        <td><?php echo $data['SUM(card_price)']; ?></td>
+                        <td>
+                            <a href="../api/pay.php?id=<?php echo $row['2']; ?>">
+                                <Button class="btn btn-block bg-warning">pay</Button>
+                            </a>
+                        </td>
+                    </tr>
+                <?php }  ?>
+            </tbody>
+        </table>
+    </div>
+    <!-- HTML code goes here -->
+    <script src="all.js"></script>
 </body>
 
 </html>

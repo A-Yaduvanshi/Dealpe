@@ -798,13 +798,13 @@ if (!isset($_SESSION["sess_user"])) {
 
 								<p style="font-weight: bold;"> Total Revenue</p>
 								<h2><?php
-									$sql = "SELECT  SUM(card_price) FROM `membership_card` WHERE `admin_id`='" . $_SESSION['sess_user'] . "' and `customer_select`='1'";
+									$sql = "SELECT  SUM(membership_price) FROM `membership_card` WHERE `admin_id`='" . $_SESSION['sess_user'] . "' and `customer_select`='1'";
 									$run = mysqli_query($conn, $sql);
 									// echo $_SESSION['sess_user'];
 									$data = mysqli_fetch_assoc($run);
-									if ($data['SUM(card_price)'] > 0) {
+									if ($data['SUM(membership_price)'] > 0) {
 										# code...
-										echo $data['SUM(card_price)'];
+										echo $data['SUM(membership_price)'];
 									} else {
 										echo 0;
 									} ?></h2>

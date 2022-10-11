@@ -108,7 +108,7 @@ $query = mysqli_query($conn, $selectquery);
    <td> <?php echo $res[2]; ?></td>
    <td> <?php echo $res[3]; ?></td>
    <td> <?php echo $res[4]; ?></td>
-   <td> <?php echo $res[12]; ?></td>
+   <td> <?php echo $res[7]; ?></td>
    <td> <?php echo $res[9]; ?></td>
      
    <td class="no-print">

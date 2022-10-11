@@ -214,15 +214,33 @@ form .buttons button , .backBtn{
 
                        
                         <!-- <input list="list1"> -->
-                       <form action="./franchisecommissionapi.php" method="get"> <select name="business_name" id="list1">
+                       <!-- <form action="./franchisecommissionapi.php" method="get"> <select name="business_name" id="list1"> -->
                         
-                        <?php while($row = mysqli_fetch_assoc($query)){ ?>
-                            
-                            <option><?php echo $row['Business_Name'] ?></option>
+                        <?php 
+                        
+                        while($row = mysqli_fetch_assoc($query)){
+                            $name=$row['Business_Name'];
+                            //   echo $name;
+                              $sql="SELECT SUM(membership_price) FROM `membership_card` WHERE `admin_id`='rahul@gmail.com' AND `assign_name`='".$name."' AND `customer_select`='1'";
+                              $runs=mysqli_query($conn,$sql);
+                              $fetch=mysqli_fetch_assoc($runs); ?>
+                          
+                            <p><?php 
+                             
+                            echo $row['Business_Name'];
+                            echo $fetch[ 'SUM(membership_price)' ]; ?>
+                            </p>
                             <?php } ?> 
-                        </select>
+                        <!-- </select> -->
 
+<!-- <?php 
+include "../api/connection.php";
 
+$sql="SELECT SUM(membership_price) FROM `membership_card` WHERE `admin_id`='rahul@gmail.com' AND `assign_name`='mc' AND `customer_select`='1'";
+$runs=mysqli_query($conn,$sql);
+$fetch=mysqli_fetch_assoc($runs);
+
+?> -->
                       
 
 
@@ -240,7 +258,7 @@ form .buttons button , .backBtn{
                     </button> 
 
             </div>
-                        </form>
+                        <!-- </form> -->
         </div>
            
 
