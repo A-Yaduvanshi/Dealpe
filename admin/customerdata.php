@@ -73,6 +73,7 @@ $query = mysqli_query($conn,$sql);
                 <table class="table tx-13" id="example1">
                     <thead>
                         <tr>
+                        <th>S.NO.</th>
               <th>Name</th>
               <th>Phone</th>
               <th>Email</th>
