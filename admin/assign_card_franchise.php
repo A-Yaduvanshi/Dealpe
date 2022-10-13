@@ -5,7 +5,6 @@ $query = mysqli_query($conn, $sql);
 // $row = mysqli_fetch_assoc($query);
 $sql_2 = "SELECT * FROM `membership_card`";
 $membership_card = mysqli_query($conn, $sql_2);
-
 $six_months = "SELECT * FROM `membership_card` WHERE `assign` != 1 and `asign_count` !=1";
 $runsix = mysqli_query($conn, $six_months);
 $rowsix = mysqli_num_rows($runsix);
@@ -53,30 +52,20 @@ $run = mysqli_query($conn, $sql_2);
         padding: 10px;
         text-align: center;
         margin: auto;
-
     }
 </style>
 
 <body class="bg-dark m-5">
     <div class="container-fluid container-md container-sm border border-primary bg-white">
-        <header style="font-weight: bold; color:brown;text-align:center;text-decoration:underline;font-size:30px;">Assign Cards Franchise</header>
+        <header style="font-weight: bold; color:brown;text-align:center;text-decoration:underline;font-size:30px;">Assign Cards To Franchise</header>
         <!-- <img   src="man.jpg" class="rounded float-end" style="height: 200px;width:200px;padding: ;" alt="..."> -->
         <!-- <img style="height: 200px;width:200px; margin-top: 10px; "src="man.jpg"> -->
         <a href="../admin/dashboard.php"> <button style="background-color: #6c63ff;color:white;float: right;padding:8px; border-radius: 10px;">Go Home</button></a>
         <div class="container-fluid container-md container-sm  bg-white mt-5">
-            <h5 class="row my-2 ">Total Available Cards: <?php echo $rowsix; ?></h5>
-            
-            <h5 class="row my-2 ">Available membership_card</h5>
-                    <input list="list1">
-                    <datalist id="list1">
-                        <?php while ($row_2 = mysqli_fetch_assoc($run)) { ?>
-                            <option><?php echo $row_2['membership_card'] ?></option>
-                        <?php } ?>
-                    </datalist>
-
-            <div class="row mx-2 border">
+            <h5 class="row mb-4 ">Total Available Cards: <?php echo $rowsix; ?></h5>
+            <div class="row mx-2 p-4 border">
                 <h5 class="m-3">franchise Business name</h5 class="m-3">
-                <div class="col-3 border ">
+                <div class="col-3  ">
                     <!-- <select id="franchise" onchange="selectchange()"> -->
                     <input list="list" name="name" id="franchise" onchange="selectchange()">
                     <datalist id="list">
@@ -94,44 +83,34 @@ $run = mysqli_query($conn, $sql_2);
                 </div>
                 <div class="col-5">
                     <table id="ans">
-
                     </table>
                 </div>
-                
-                  
-
-            
             </div>
-
         </div>
-
         <div class="container-fluid my-5 border border-primary">
-            <form action="assignCard.php" method="get" enctype="multipart/form-data">
+            <form action="assignCard.php" method="POST" enctype="multipart/form-data">
                 <div class="container-fluid container-md container-sm ">
                     <!-- < class="details personal"> -->
                     <!-- <span class="title" style="font-size: 22px;text-align:center;text-decoration:underline;">Assign Cards</span> -->
                     <div class="row ">
-                        <!-- <div class="col-3 ">
-                        <?php
-                        error_reporting(E_ALL ^ E_WARNING);
-                        $sql = "SELECT * FROM `membership_card` WHERE `id`=(SELECT MAX(`id`) FROM  `membership_card`) AND `asign_count`='0'";
-                        $run = mysqli_query($conn, $sql);
-                        $fetch = mysqli_fetch_assoc($run);
-                        if ($fetch['membership_card'] == NULL) {
-                            echo '0';
-                        } else {
-                            # code...
-                            echo $fetch['membership_card'];
-                        }
-                        ?>
-                        <label>Enter Card</label>
-                        <input type="text" placeholder="Enter your Cards Assign">
-                    </div> -->
-                        <div class="col-3 m-5">
+                        <div class="col-3 m-4">
+                            <label>Available membership_card</label>
+                            <input list="list1" name="membership_card" placeholder="select card no.">
+                            <datalist id="list1">
+                                <?php while ($row_2 = mysqli_fetch_assoc($run)) { ?>
+                                    <option><?php echo $row_2['membership_card'] ?></option>
+                                <?php } ?>
+                            </datalist>
+                        </div>
+                        <div class="col-2 m-4 ">
+                            <label>Enter Franchise Id No.</label>
+                            <input type="text" placeholder="Enter Franchise ID no." name="id" required>
+                        </div>
+                        <div class="col-2 m-4">
                             <label>Franchise Name</label>
                             <input type="text" placeholder="Enter your name" name="franchise_name" required>
                         </div>
-                        <div class="col-3 m-5">
+                        <div class="col-3 m-4">
                             <label>Membership card Quantity</label>
                             <input type="text" placeholder="Enter number Quantity" name="quantity" required>
                         </div>
@@ -142,15 +121,9 @@ $run = mysqli_query($conn, $sql_2);
                              <option value="6 months">6 months</option>
                          </select>
                      </div> -->
-
-                        <div class="col-3">
+                        <div class="m-3 text-center">
                             <!-- <span class="title">Identity Details</span> -->
-
-                            <button class="mt-5">
-                                <span class="btnText">Submit</span>
-                                <!-- <i class="uil uil-navigator"></i> -->
-                            </button>
-
+                            <button type="text" name="submit" class="btn btn-primary"><span class="btnText">Submit</span></button>
                         </div>
                     </div>
             </form>
