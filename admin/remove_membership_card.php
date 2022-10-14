@@ -51,20 +51,50 @@
   <tbody>
   <?php
 while ($row=mysqli_fetch_assoc($query)) {?>
+  
     <tr>
-    <td><?php echo $row['membership_card'] ?></td>
-    <td><?php echo $row['assign_name'] ?></td>
-    <td><?php echo $row['validity_date'] ?></td>
-    <td><?php echo $row['assign_date'] ?></td>
-<td><input placeholder="enter value" name="replace"></td>
-<td><a href="./removeCard.php?id=<?php echo $res[0];?>">
-<button class="btn btn-block bg-danger text-white">replace</button>
-</a></td> 
+    
+    <td id="membership_card"><?php echo $row['membership_card'] ?></td>
+    <td id="assign_name"><?php echo $row['assign_name'] ?></td>
+    <td id="validity_date"><?php echo $row['validity_date'] ?></td>
+    <td id="assign_date"><?php echo $row['assign_date'] ?></td>
+    <td id="replace"><input placeholder="enter value" name="replace"></td>
+    <p id="id"><?php  $row['id'] ?></p>
+<td>
+<button id="btn" class="btn btn-block bg-danger text-white">replace</button> 
+</td> 
 </tr>
+
 <?php }
   ?>
   </tbody>
 </table>
+<script type="text/javascript" language="javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>  
+<script type="text/javascript" language="javascript">  
+  
+$("#btn").live("click",function(){  
+      
+      
+    var new_card= $("#replace").val();
+    var membership_card=document.getElementById ( "membership_card" ).text;
+    var name= document.getElementById ( "assign_name" ).text;
+    var id= document.getElementById ( "id" ).text;
+     
+    $.ajax({  
+              
+    type:"POST",  
+    url:"removeCard.php",  
+    data:"id="+id+'&card_num='+membership_card+'&new_card='+new_card+'&name='+name,  
+    success:function(data){  
+        alert(data);  
+          
+    }  
+      
+    });  
+      
+});  
+  
+</script> 
 </div> 
 </body>
  </html>
