@@ -580,7 +580,7 @@ if (!isset($_SESSION['Business_Name'])) {
     <div class="sidebar">
       <div class="logo-details">
         <img style="height: 70px; width:70px;" src="./image/Green Gradient Healthcare Medical Clinic Logo Symbol (3).png">
-        <span class="logo_name">Franchise</span>
+        <span style="color: white;">DealPe Franchise Dashboard</span>
       </div>
       <ul class="nav-links">
         <li>
@@ -699,6 +699,53 @@ if (!isset($_SESSION['Business_Name'])) {
             </div>
              <i class='bx bx-cart-alt cart'></i> 
           </div> -->
+          <div class="box">
+            <div class="right-side">
+              <!-- <?php include "../api/connection.php";
+                    $sql = "SELECT  SUM(membership_price) FROM `membership_card` WHERE `assign_name`='" . $_SESSION['owener_Name'] . "' and `sale_count`=1";
+                    $run = mysqli_query($conn, $sql);
+                    $data = mysqli_fetch_assoc($run);
+                    $sql_2 = "SELECT * FROM `franchisesignup` WHERE `Business_email`='" . $_SESSION['sess_email'] . "'";
+                    $run_2 = mysqli_query($conn, $sql_2);
+                    $data_2 = mysqli_fetch_assoc($run_2);
+                    ?> -->
+              <?php include "../api/connection.php";
+
+
+              $sales_name = "SELECT * FROM `sales` WHERE `frachise_id`='" . $_SESSION['sess_user'] . "'";
+              $querys = mysqli_query($conn, $sales_name);
+              $fetch = mysqli_fetch_assoc($querys);
+              $sales_n = $fetch['Customer_name'];
+              // echo $sales_n;
+              $sql = "SELECT  SUM(membership_price) FROM `membership_card` WHERE `franchise_id`='" . $_SESSION['sess_user'] . "' and `customer_select`='1'";
+              $run = mysqli_query($conn, $sql);
+              // echo $_SESSION['sess_user'];
+              $data = mysqli_fetch_assoc($run);
+              // $sql_2 = "SELECT * FROM `sales` WHERE `Customer_name`='" . $_SESSION['customer_name'] . "'";
+              // $run_2 = mysqli_query($conn, $sql_2);
+              // $data_2 = mysqli_fetch_assoc($run_2);
+              $fran="SELECT * FROM `franchisesignup` WHERE `id`='". $_SESSION['sess_user']."'";
+              $data_fran=mysqli_query($conn,$fran);
+$fetch_fran=mysqli_fetch_assoc($data_fran);
+              // echo $fetch_fran['commission'];
+              ?>
+
+              <div class="box-topic"> Franchise Commission</div>
+              <div class="number"><?php
+                                  if ($data['SUM(membership_price)'] > 0) {
+                                    # code...
+                                    echo ($data['SUM(membership_price)']*$fetch_fran['commission'])/100;
+                                  } else {
+                                    echo 0;
+                                  }
+                                  ?></div>
+              <div class="indicator">
+                <!-- <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span> -->
+              </div>
+            </div>
+            <!-- <i class='bx bxs-cart-add cart two'></i> -->
+          </div>
           <div class="box">
             <div class="right-side">
               <!-- <?php include "../api/connection.php";

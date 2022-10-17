@@ -713,11 +713,12 @@ if (!isset($_SESSION["sess_user"])) {
 				<li><a href="#top" class="active"><i class='bx bxs-dashboard icon'></i>Dashboard</a></li>
 				<li class="divider" data-text="main">Main</li>
 				<li>
+					<a style="font-weight: bold;" href="../admin/membershpcard_data.php"><i class='bx bxs-log-in icon'></i>Stocks</a>
 					<a style="font-weight: bold;" href="../admin/mers.php"><i class='bx bxs-log-in icon'></i>Merchant</a>
 					<a style="font-weight: bold;" href="../admin/franchisedashdata.php"><i class='bx bxs-log-in icon'></i>Franchise</a>
 					<a style="font-weight: bold;" href="../admin/customerdata.php"><i class='bx bxs-log-in icon'></i>Customer</a>
 					<a style="font-weight: bold;" href="../admin/total_sales.php"><i class='bx bxs-log-in icon'></i>Sales Executive</a>
-					<a style="font-weight: bold;" href="../admin/membershpcard_data.php"><i class='bx bxs-log-in icon'></i>Membership_card Details</a>
+
 				</li>
 				<!-- <li><a href="Customer/Customercontact.html"><i class='bx bxs-contact icon'></i>Customer Contact</a></li> -->
 				<li class="divider" data-text="Card Sold and Report"> Card Sold and Report</li>
