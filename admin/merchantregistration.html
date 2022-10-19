@@ -7,6 +7,17 @@
     <!---<title> Responsive Registration Form | CodingLab </title>--->
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link href="hide-show-fields-form.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-css/1.4.6/select2-bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
 </head>
 <style>
     /* ===== Google Font Import - Poppins ===== */
@@ -56,345 +67,338 @@
         background-color: #4070f4;
     }
 
-    .container form {
-        position: relative;
-        margin-top: 16px;
-        min-height: 550px;
-        background-color: #fff;
-        overflow: hidden;
-    }
-
-    .container form .form {
-        position: absolute;
-        background-color: #fff;
-        transition: 0.3s ease;
-    }
-
-    .container form .form.second {
-        opacity: 0;
-        pointer-events: none;
-        transform: translateX(100%);
-    }
-
-    form.secActive .form.second {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateX(0);
-    }
-
-    form.secActive .form.first {
-        opacity: 0;
-        pointer-events: none;
-        transform: translateX(-100%);
-    }
-
-    .container form .title {
+    form {
+        max-width: 900px;
         display: block;
-        margin-bottom: 8px;
-        font-size: 16px;
-        font-weight: 500;
-        margin: 6px 0;
-        color: #333;
+        margin: 0 auto;
     }
 
-    .container form .fields {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
+    .select2-results__option {
+        padding-right: 20px;
+        vertical-align: middle;
     }
 
-    form .fields .input-field {
-        display: flex;
-        width: calc(100% / 3 - 15px);
-        flex-direction: column;
-        margin: 4px 0;
+    .select2-results__option:before {
+        content: "";
+        display: inline-block;
+        position: relative;
+        height: 20px;
+        width: 20px;
+        border: 2px solid #e9e9e9;
+        border-radius: 4px;
+        background-color: #fff;
+        margin-right: 20px;
+        vertical-align: middle;
     }
 
-    .input-field label {
-        font-size: 12px;
-        font-weight: 500;
-        color: #2e2e2e;
-    }
-
-    .input-field input,
-    select {
-        outline: none;
-        font-size: 14px;
-        font-weight: 400;
-        color: #333;
-        border-radius: 5px;
-        border: 1px solid #aaa;
-        padding: 0 15px;
-        height: 42px;
-        margin: 8px 0;
-    }
-
-    .input-field input :focus,
-    .input-field select:focus {
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
-    }
-
-    .input-field select,
-    .input-field input[type="date"] {
-        color: #707070;
-    }
-
-    .input-field input[type="date"]:valid {
-        color: #333;
-    }
-
-    .container form button,
-    .backBtn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 45px;
-        max-width: 200px;
-        width: 100%;
-        border: none;
-        outline: none;
+    .select2-results__option[aria-selected=true]:before {
+        font-family: fontAwesome;
+        content: "\f00c";
         color: #fff;
-        border-radius: 5px;
-        margin: 25px 0;
-        background-color: #4070f4;
-        transition: all 0.3s linear;
-        cursor: pointer;
+        background-color: #f77750;
+        border: 0;
+        display: inline-block;
+        padding-left: 3px;
     }
 
-    .container form .btnText {
-        font-size: 14px;
-        font-weight: 400;
+    .select2-container--default .select2-results__option[aria-selected=true] {
+        background-color: #fff;
     }
 
-    form button:hover {
-        background-color: #265df2;
+    .select2-container--default .select2-results__option--highlighted[aria-selected] {
+        background-color: #eaeaeb;
+        color: #272727;
     }
 
-    form button i,
-    form .backBtn i {
-        margin: 0 6px;
+    .select2-container--default .select2-selection--multiple {
+        margin-bottom: 10px;
     }
 
-    form .backBtn i {
-        transform: rotate(180deg);
+    .select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple {
+        border-radius: 4px;
     }
 
-    form .buttons {
-        display: flex;
-        align-items: center;
+    .select2-container--default.select2-container--focus .select2-selection--multiple {
+        border-color: #f77750;
+        border-width: 2px;
     }
 
-    form .buttons button,
-    .backBtn {
-        margin-right: 14px;
+    .select2-container--default .select2-selection--multiple {
+        border-width: 2px;
     }
 
-    @media (max-width: 750px) {
-        .container form {
-            overflow-y: scroll;
-        }
-
-        .container form::-webkit-scrollbar {
-            display: none;
-        }
-
-        form .fields .input-field {
-            width: calc(100% / 2 - 15px);
-        }
+    .select2-container--open .select2-dropdown--below {
+        border-radius: 6px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
 
-    @media (max-width: 550px) {
-        form .fields .input-field {
-            width: 100%;
-        }
+    .select2-selection .select2-selection--multiple:after {
+        content: 'hhghgh';
+    }
+
+    /* select with icons badges single*/
+    .select-icon .select2-selection__placeholder .badge {
+        display: none;
+    }
+
+    .select-icon .placeholder {
+        /*  display: none; */
+    }
+
+    .select-icon .select2-results__option:before,
+    .select-icon .select2-results__option[aria-selected=true]:before {
+        display: none !important;
+        /* content: "" !important; */
+    }
+
+    .select-icon .select2-search--dropdown {
+        display: none;
     }
 </style>
 
 <body>
     <div class="container">
         <header style="font-weight: bold;">Registration For Merchant</header>
+        <form action="./merchantprofile.php" method="post" style="padding: 20px; margin-top: 70px;">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-3 pb-2">
+                        <label style="font-weight: 1000;" for="name">Business Name</label>
+                        <input type="text" class="form-control" id="name" name="bussinessname" required>
+                    </div>
+                    <div class="col-3 pb-2">
+                        <label style="font-weight:1000;" for="name">Merchant Operator </label>
+                        <input type="text" class="form-control" id="name" name="operator" required>
+                    </div>
+                    <div class="col-3 pb-2">
+                        <label style="font-weight: 1000;" for="name">Email</label>
+                        <input type="email" class="form-control" id="name" name="email" required>
+                    </div>
+                    <!-- <div class="col-3 pb-2">
+                        <label style="font-weight: 1000;" for="name">Date</label>
+                        <input type="date" id="name" name="trip-start" class="form-control" 
+                            min="2018-01-01" max="2018-12-3 pb-21">
+                    </div> -->
+                    <div class="col-3 pb-2">
+                        <label style="font-weight: 1000;" for="name">Discount Bill:- %</label>
+                        <input type="number" id="name" name="discount" class="form-control" required>
+                    </div>
+                    <div class="col-3 pb-2">
+                        <label style="font-weight: 1000;" for="name">Aggreement End Date</label>
+                        <input type="text" id="name" name="aggrement_date" class="form-control" required>
+                    </div>
+                    <!-- min="2018-01-01" max="2018-12-3 pb-21" -->
 
-        <form action="./merchantprofile.php" method="post" enctype="multipart/form-data">
-            <div class="form first">
-                <div class="details personal">
-                    <span class="title">Mentions Details...</span>
+                    <div class="col-3 pb-2">
+                        <label style="font-weight: 1000;" for="name">Address Type 1</label>
+                        <input type="text" id="name" name="trip-start" class="form-control" required>
+                    </div>
+                    <div class="col-3 pb-2">
+                        <label style="font-weight: 1000;" for="name">Address type 2</label>
+                        <input type="text" id="name" name="trip-start" class="form-control" >
+                    </div>
+                    <div class="col-3 pb-2">
+                        <label style="font-weight: 1000;" for="name">Landmark</label>
+                        <input type="text" id="name" name="landmark" class="form-control" required>
+                    </div>
+                    <div class="col-3 pb-2">
+                        <label style="font-weight: 1000;" for="name">State</label>
+                        <select required class="form-control" name="state">
+                            <option disabled selected>Select State</option>
+                            <option>Andhra Pradesh</option>
+                            <option>Arunachal Pradesh</option>
+                            <option>Assam</option>
+                            <option>Bihar</option>
+                            <option>Chhattisgarh</option>
+                            <option>Delhi</option>
+                            <option>Goa</option>
+                            <option>Gujarat</option>
+                            <option>Haryana</option>
+                            <option>Himachal Pradesh </option>
+                            <option>Jharkhand</option>
+                            <option>Karnataka</option>
+                            <option>Kerala</option>
+                            <option>Madhya Pradesh</option>
+                            <option>Maharashtra</option>
+                            <option>Manipur</option>
+                            <option>Meghalaya</option>
+                            <option>Mizoram </option>
+                            <option>Nagaland</option>
+                            <option>Odisha</option>
+                            <option>Punjab</option>
+                            <option>Rajasthan</option>
+                            <option>Sikkim</option>
+                            <option>Tamil Nadu</option>
+                            <option>Telangana</option>
+                            <option>Tripura</option>
+                            <option>Uttar Pradesh</option>
+                            <option>Uttarakhand</option>
+                            <option>West Bengal</option>
+                        </select>
+                    </div>
+                    <div class="col-3 pb-2">
+                        <label style="font-weight: 1000;" for="name">District</label>
+                        <input type="text" id="name" name="district" class="form-control">
+                    </div>
+                    <div class="col-3 pb-2">
+                        <label style="font-weight: 1000;" for="name">Start time</label>
+                        <input type="time" name="start_time" class="form-control">
+                    </div>
+                    <div class="col-3 pb-2">
+                        <label style="font-weight: 1000;" for="name">End time</label>
+                        <input type="time" name="end_time" class="form-control">
+                    </div>
+                    <div class="col-4">
+                        <label style="font-weight: 1000;" for="name">Photo</label>
+                        <input type="file" class="form-control" id="name" placeholder="Owner Image" name="owner_image"
+                            required>
+                    </div>
+                    <div class="col-3 pb-2">
+                        <label style="font-weight: 1000;" for="seeAnotherFieldGroup">Category</label>
+                        <select class="form-control" id="seeAnotherFieldGroup" name="category" style="width:200px;">
+                            <option value="no">select</option>
+                            <option value="yes">Hospital</option>
+                            <option value="yes2">Lab</option>
+                            <option value="no">Pharmacy</option>
+                            <option value="no">Agriculture</option>
+                            <option value="no">Beauty</option>
+                            <option value="no">Grooming</option>
+                            <option value="no">Fashion</option>
+                            <option value="no">Foods</option>
+                            <option value="no">Hotal</option>
+                            <option value="no">Electronic </option>
+                            <option value="no">Grocery</option>
+                            <option value="no">Travel</option>
+                            <option value="no">Furniture</option>
+                            <option value="no">Online Brands</option>
+                        </select>
+                    </div>
+                    <div class="col-12 pt-3 pb-2">
+                        <label style="font-weight: 1000;" for="name">Working Days</label>
+                        <select class="js-select2" required multiple="multiple" name="working_day" style="width:600px;">
+                            <option value="O1" data-badge="">Sunady</option>
+                            <option value="O2" data-badge="">Monday</option>
+                            <option value="O3" data-badge="">Tuesday</option>
+                            <option value="O4" data-badge="">Wednesday</option>
+                            <option value="O5" data-badge="">Thursday</option>
+                            <option value="O6" data-badge="">Friday</option>
+                            <option value="O7" data-badge="">Saturday</option>
+                        </select>
+                    </div>
 
-                    <div class="fields">
-                        <div class="input-field">
-                            <label> Business Name</label>
-                            <input type="text" placeholder="Enter your name" name="bussinessname" required>
+                    <div class="form-group" id="otherFieldGroupDiv">
+                        <div class="row">
+                            <div class="col-3 pb-2">
+                                <label style="font-weight: 500;" for="otherField1">Hospital Name</label>
+                                <input type="text" class="form-control w-100" name="Hospital" id="otherField1">
+                            </div>
+                            <div class="col-3 pb-2">
+                                <label style="font-weight: 500;" for="otherField2">Doctor Name</label>
+                                <input type="text" class="form-control w-100" name="Doc_name" id="otherField2">
+                            </div>
+                            <div class="col-3 pb-2">
+                                <label style="font-weight: 500;" for="otherField1">OPD fee</label>
+                                <input type="tel" class="form-control w-100" name="Opd_free" id="otherField1">
+                            </div>
+                            <div class="col-3 pb-2">
+                                <label style="font-weight: 500;" for="otherField2">Free Opd</label>
+                                <input type="tel" class="form-control w-100" name="" id="otherField2">
+                            </div>
+                            <div class="col-3 pb-2">
+                                <label style="font-weight: 500;" for="otherField1">Opd Discount :- %</label>
+                                <input type="tel" class="form-control w-100" name="Opd_disount" id="otherField1">
+                            </div>
+                            <div class="col-3 pb-2">
+                                <label style="font-weight: 500;" for="otherField2">Discount On Total :- %</label>
+                                <input type="tel" class="form-control w-100" name="Hospital_discount" id="otherField2">
+                            </div>
+                            <div class="col-4">
+                                <label style="font-weight: 500;" for="otherField1">Hospital/Doctor Specility</label>
+                                <input type="text" class="form-control w-100" name="Specility" id="otherField1">
+                            </div>
                         </div>
-                        <div class="input-field">
-                            <label> Email</label>
-                            <input type="email" placeholder="Enter your Email" name="email" required>
-                        </div>
-                        <div class="input-field">
-                            <label> password</label>
-                            <input type="password" placeholder="Enter your password" name="password" required>
-                        </div>
-                        <div class="input-field">
-                            <label>Days</label>
-                            <input type="hidden" placeholder="Sunday,Monday,Wednesday" value="no_dob" name="dob" required>
-                             <input type="text" placeholder="Sunday,Monday,Wednesday" name="days" required>
-                        </div>
+                    </div>
+                    <div class="form-group" id="otherFieldGroupDivv">
+                        <div class="row">
+                            <div class="col-3 pb-2">
+                                <label style="font-weight: 500;" for="otherField11">Lab Name</label>
+                                <input type="text" class="form-control w-100" name="lab_name" id="otherField11">
+                            </div>
+                            <div class="col-3 pb-2">
+                                <label style="font-weight: 500;" for="otherField22">Lab Category</label>
+                                <select class="form-control" name="lab_cat" id="seeAnotherFieldGroup">
+                                    <option value="no">Select...</option>
+                                    <option value="no">Radiology</option>
+                                    <option value="no">Pathology</option>
+                                    <option value="no">Radiology and Pathology Both</option>
+                                </select>
+                            </div>
 
-                        <div class="input-field">
-                            <label>Mobile Number</label>
-                            <input type="tel" placeholder="Enter mobile number" name="mobile_no" required>
                         </div>
-                        <div class="input-field">
-                            <label>Starting Time</label>
-                            <input type="time"  name="starting_time">
-                        </div>
-
-                        <div class="input-field">
-                            <label>Ending Time</label>
-                            <input type="time"  name="end_time">
-                        </div>
-
-                       
-                        <div class="input-field">
-                            <label>Address</label>
-                            <input type="text" placeholder="Enter address" name="Address" required>
-                        </div>
-                       
-                        <div class="input-field">
-                            <label>State</label>
-                            <!-- <input type="text" placeholder="enter state" name="state" required> -->
-                          <select name="state" required >
-                                <option disabled selected>Select..</option>
-                                <option>Andhra Pradesh</option>
-                                <option>Arunachal Pradesh</option>
-                                <option>Assam</option>
-                                <option >Bihar</option>
-                                <option >Chhattisgarh</option>
-                                <option >Delhi</option>
-                                 <option >Goa</option>
-                                <option >Gujarat</option>
-                                <option >Haryana</option>
-                                <option >Himachal Pradesh   </option>
-                                <option >Jharkhand</option>
-                                <option >Karnataka</option>
-                                <option >Kerala</option>
-                                <option >Madhya Pradesh</option>
-                                <option >Maharashtra</option>
-                                <option >Manipur</option>
-                                <option >Meghalaya</option>
-                                <option >Mizoram    </option>
-                                <option >Nagaland</option>
-                                <option >Odisha</option>
-                                <option >Punjab</option>
-                                <option >Rajasthan</option>
-                                <option >Sikkim</option>
-                                <option >Tamil Nadu</option>
-                                <option >Telangana</option>
-                                <option >Tripura</option>
-                                <option >Uttar Pradesh</option>
-                                <option >Uttarakhand</option>
-                                <option >West Bengal</option>
-                            </select>
-                         </div>
-                        <div class="input-field">
-                            <label>District</label>
-                            <input type="text" placeholder="Distict" name="district">
-                          
-                        </div>
-                        <div class="input-field">
-                            <label>Pin Code</label>
-                            <input type="tel" placeholder="Enter pin code" name="pincode" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Given Commission</label>
-                            <input type="text" placeholder="Given Commision" name="given_commision" required>
-                        </div>
-
-                        <button class="nextBtn" name="submit">
-                            <span class="btnText">Submit </span>
-                            <!-- <i class="uil uil-navigator"></i> -->
-                        </button>
                     </div>
                 </div>
             </div>
-    </div>
-
-
-  
-    </form>
+            <button style="background-color: #000000;" name="submit" type="submit"
+                class="btn btn-primary">Submit</button>
+        </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
-     
-    
-    <script >
-        $("#seeAnotherField").change(function() {
-                if ($(this).val() == "yes") {
-                    $('#otherFieldDiv').show();
-                    $('#otherField').attr('required','');
-                    $('#otherField').attr('data-error', 'This field is required.');
-                } else {
-                    $('#otherFieldDiv').hide();
-                    $('#otherField').removeAttr('required');
-                    $('#otherField').removeAttr('data-error');				
-                }
-            });
-            $("#seeAnotherField").trigger("change");
-            
-    $("#seeAnotherFieldGroup").change(function() {
-                if ($(this).val() == "yes") {
-                    $('#otherFieldGroupDiv').show();
-                    $('#otherField1').attr('required','');
-                    $('#otherField1').attr('data-error', 'This field is required.');
-            $('#otherField2').attr('required','');
-                    $('#otherField2').attr('data-error', 'This field is required.');
-                } else {
-                    $('#otherFieldGroupDiv').hide();
-                    $('#otherField1').removeAttr('required');
-                    $('#otherField1').removeAttr('data-error');
-            $('#otherField2').removeAttr('required');
-                    $('#otherField2').removeAttr('data-error');	
-                }
-    
-                if ($(this).val() == "yes2") {
-                    $('#otherFieldGroupDivv').show();
-                    $('#otherField11').attr('required','');
-                    $('#otherField11').attr('data-error', 'This field is required.');
-            $('#otherField22').attr('required','');
-                    $('#otherField22').attr('data-error', 'This field is required.');
-                } else {
-                    $('#otherFieldGroupDivv').hide();
-                    $('#otherField11').removeAttr('required');
-                    $('#otherField11').removeAttr('data-error');
-            $('#otherField22').removeAttr('required');
-                    $('#otherField22').removeAttr('data-error');	
-                }
-    
-    
-            });
-            $("#seeAnotherFieldGroup").trigger("change");
-    
-            
-    
-    
-            
-    
-    
-    
-            
-            
+    <script>
+        $("#seeAnotherField").change(function () {
+            if ($(this).val() == "yes") {
+                $('#otherFieldDiv').show();
+                $('#otherField').attr('required', '');
+                $('#otherField').attr('data-error', 'This field is required.');
+            } else {
+                $('#otherFieldDiv').hide();
+                $('#otherField').removeAttr('required');
+                $('#otherField').removeAttr('data-error');
+            }
+        });
+        $("#seeAnotherField").trigger("change");
+        $("#seeAnotherFieldGroup").change(function () {
+            if ($(this).val() == "yes") {
+                $('#otherFieldGroupDiv').show();
+                $('#otherField1').attr('required', '');
+                $('#otherField1').attr('data-error', 'This field is required.');
+                $('#otherField2').attr('required', '');
+                $('#otherField2').attr('data-error', 'This field is required.');
+            } else {
+                $('#otherFieldGroupDiv').hide();
+                $('#otherField1').removeAttr('required');
+                $('#otherField1').removeAttr('data-error');
+                $('#otherField2').removeAttr('required');
+                $('#otherField2').removeAttr('data-error');
+            }
+            if ($(this).val() == "yes2") {
+                $('#otherFieldGroupDivv').show();
+                $('#otherField11').attr('required', '');
+                $('#otherField11').attr('data-error', 'This field is required.');
+                $('#otherField22').attr('required', '');
+                $('#otherField22').attr('data-error', 'This field is required.');
+            } else {
+                $('#otherFieldGroupDivv').hide();
+                $('#otherField11').removeAttr('required');
+                $('#otherField11').removeAttr('data-error');
+                $('#otherField22').removeAttr('required');
+                $('#otherField22').removeAttr('data-error');
+            }
+        });
+        $("#seeAnotherFieldGroup").trigger("change");
     </script>
     <script>
-      $(".js-select2").select2({
-      closeOnSelect : false,
-      placeholder : "",
-      // allowHtml: true,
-      allowClear: true,
-      tags: true // создает новые опции на лету
-    });</script>
+        $(".js-select2").select2({
+            closeOnSelect: false,
+            placeholder: "",
+            // allowHtml: true,
+            allowClear: true,
+            tags: true // создает новые опции на лету
+        });
+    </script>
 </body>
 
 </html>
