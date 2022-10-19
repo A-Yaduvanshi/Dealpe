@@ -93,7 +93,7 @@
                         <!-- Various options in drop down menu to
 						select the types of data structures 
 						that we need -->
-                     <select name="cards[]" class="mul-select" multiple="true">
+                     <select name="cards[]" class="mul-select" multiple="multiple">
                             <?php while ($fetch = mysqli_fetch_assoc($run)) { ?>
 
                                 <option value="<?php echo $fetch['cards'] ?>"><?php echo $fetch['cards'] ?></option>

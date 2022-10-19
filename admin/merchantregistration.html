@@ -160,16 +160,72 @@
     <div class="container">
         <header style="font-weight: bold;">Registration For Merchant</header>
         <form action="./merchantprofile.php" method="post" style="padding: 20px; margin-top: 70px;">
+            <div class="row" id="otherFieldGroupDivv">
+                <div class="col-3 pb-2">
+                    <label style="font-weight: 500;" for="otherField11">Lab Name</label>
+                    <input type="text" class="form-control w-100" name="lab_name" id="otherField11">
+                </div>
+                <div class="col-3 pb-2">
+                    <label style="font-weight: 500;" for="otherField22">Lab Category</label>
+                    <select class="form-control" name="lab_cat" id="otherField22">
+                        <option value="no">Select...</option>
+                        <option value="no">Radiology</option>
+                        <option value="no">Pathology</option>
+                        <option value="no">Radiology and Pathology Both</option>
+                    </select>
+                </div>
+                <div class="col-3 pb-2">
+                    <label style="font-weight: 1000;" for="name">Discount Bill:- %</label>
+                    <input type="number" id="name" id="Discount" name="discount" class="form-control" required>
+                </div>
+            </div>
+            <div class="row" id="business">
+                <div class="col-3 pb-2">
+                    <label style="font-weight: 1000;" for="name">Business Name</label>
+                    <input type="text" class="form-control" id="Business_name" name="bussinessname" required>
+                </div>
+                <div class="col-3 pb-2">
+                    <label style="font-weight:1000;" for="name">Merchant Operator </label>
+                    <input type="text" class="form-control" id="Merchant_name" name="operator" required>
+                </div>
+                <div class="col-3 pb-2">
+                    <label style="font-weight: 1000;" for="name">Discount Bill:- %</label>
+                    <input type="number" id="name" id="Discount" name="discount" class="form-control" required>
+                </div>
+            </div>
+            <div class="row" id="otherFieldGroupDiv">
+                <div class="col-3 pb-2">
+                    <label style="font-weight: 500;" for="otherField1">Hospital Name</label>
+                    <input type="text" class="form-control w-100" name="Hospital" id="otherField1">
+                </div>
+                <div class="col-3 pb-2">
+                    <label style="font-weight: 500;" for="otherField2">Doctor Name</label>
+                    <input type="text" class="form-control w-100" name="Doc_name" id="otherField2">
+                </div>
+                <div class="col-3 pb-2">
+                    <label style="font-weight: 500;" for="otherField1">OPD fee</label>
+                    <input type="tel" class="form-control w-100" name="Opd_free" id="otherField1">
+                </div>
+                <div class="col-3 pb-2">
+                    <label style="font-weight: 500;" for="otherField2">Free Opd</label>
+                    <input type="tel" class="form-control w-100" name="" id="otherField2">
+                </div>
+                <div class="col-3 pb-2">
+                    <label style="font-weight: 500;" for="otherField1">Opd Discount :- %</label>
+                    <input type="tel" class="form-control w-100" name="Opd_disount" id="otherField1">
+                </div>
+                <div class="col-3 pb-2">
+                    <label style="font-weight: 500;" for="otherField2">Discount On Total :- %</label>
+                    <input type="tel" class="form-control w-100" name="Hospital_discount" id="otherField2">
+                </div>
+                <div class="col-4">
+                    <label style="font-weight: 500;" for="otherField1">Hospital/Doctor Specility</label>
+                    <input type="text" class="form-control w-100" name="Specility" id="otherField1">
+                </div>
+            </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-3 pb-2">
-                        <label style="font-weight: 1000;" for="name">Business Name</label>
-                        <input type="text" class="form-control" id="name" name="bussinessname" required>
-                    </div>
-                    <div class="col-3 pb-2">
-                        <label style="font-weight:1000;" for="name">Merchant Operator </label>
-                        <input type="text" class="form-control" id="name" name="operator" required>
-                    </div>
+                   
                     <div class="col-3 pb-2">
                         <label style="font-weight: 1000;" for="name">Email</label>
                         <input type="email" class="form-control" id="name" name="email" required>
@@ -179,10 +235,7 @@
                         <input type="date" id="name" name="trip-start" class="form-control" 
                             min="2018-01-01" max="2018-12-3 pb-21">
                     </div> -->
-                    <div class="col-3 pb-2">
-                        <label style="font-weight: 1000;" for="name">Discount Bill:- %</label>
-                        <input type="number" id="name" name="discount" class="form-control" required>
-                    </div>
+                   
                     <div class="col-3 pb-2">
                         <label style="font-weight: 1000;" for="name">Aggreement End Date</label>
                         <input type="text" id="name" name="aggrement_date" class="form-control" required>
@@ -257,84 +310,36 @@
                         <label style="font-weight: 1000;" for="seeAnotherFieldGroup">Category</label>
                         <select class="form-control" id="seeAnotherFieldGroup" name="category" style="width:200px;">
                             <option value="no">select</option>
-                            <option value="yes">Hospital</option>
-                            <option value="yes2">Lab</option>
-                            <option value="no">Pharmacy</option>
-                            <option value="no">Agriculture</option>
-                            <option value="no">Beauty</option>
-                            <option value="no">Grooming</option>
-                            <option value="no">Fashion</option>
-                            <option value="no">Foods</option>
-                            <option value="no">Hotal</option>
-                            <option value="no">Electronic </option>
-                            <option value="no">Grocery</option>
-                            <option value="no">Travel</option>
-                            <option value="no">Furniture</option>
-                            <option value="no">Online Brands</option>
+                            <option value="Hospital">Hospital</option>
+                            <option value="Lab">Lab</option>
+                            <option value="Pharmacy">Pharmacy</option>
+                            <option value="Agriculture">Agriculture</option>
+                            <option value="Beauty">Beauty</option>
+                            <option value="Grooming">Grooming</option>
+                            <option value="Fashion">Fashion</option>
+                            <option value="Foods">Foods</option>
+                            <option value="Hotal">Hotal</option>
+                            <option value="Electronic">Electronic </option>
+                            <option value="Grocery">Grocery</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Furniture">Furniture</option>
+                            <option value="Online Brands">Online Brands</option>
                         </select>
                     </div>
                     <div class="col-12 pt-3 pb-2">
                         <label style="font-weight: 1000;" for="name">Working Days</label>
                         <select class="js-select2" required multiple="multiple" name="working_day" style="width:600px;">
-                            <option value="O1" data-badge="">Sunady</option>
-                            <option value="O2" data-badge="">Monday</option>
-                            <option value="O3" data-badge="">Tuesday</option>
-                            <option value="O4" data-badge="">Wednesday</option>
-                            <option value="O5" data-badge="">Thursday</option>
-                            <option value="O6" data-badge="">Friday</option>
-                            <option value="O7" data-badge="">Saturday</option>
+                            <option value="Sunady" data-badge="">Sunady</option>
+                            <option value="Monday" data-badge="">Monday</option>
+                            <option value="Tuesday" data-badge="">Tuesday</option>
+                            <option value="Wednesday" data-badge="">Wednesday</option>
+                            <option value="Thursday" data-badge="">Thursday</option>
+                            <option value="Friday" data-badge="">Friday</option>
+                            <option value="Saturday" data-badge="">Saturday</option>
                         </select>
                     </div>
-
-                    <div class="form-group" id="otherFieldGroupDiv">
-                        <div class="row">
-                            <div class="col-3 pb-2">
-                                <label style="font-weight: 500;" for="otherField1">Hospital Name</label>
-                                <input type="text" class="form-control w-100" name="Hospital" id="otherField1">
-                            </div>
-                            <div class="col-3 pb-2">
-                                <label style="font-weight: 500;" for="otherField2">Doctor Name</label>
-                                <input type="text" class="form-control w-100" name="Doc_name" id="otherField2">
-                            </div>
-                            <div class="col-3 pb-2">
-                                <label style="font-weight: 500;" for="otherField1">OPD fee</label>
-                                <input type="tel" class="form-control w-100" name="Opd_free" id="otherField1">
-                            </div>
-                            <div class="col-3 pb-2">
-                                <label style="font-weight: 500;" for="otherField2">Free Opd</label>
-                                <input type="tel" class="form-control w-100" name="" id="otherField2">
-                            </div>
-                            <div class="col-3 pb-2">
-                                <label style="font-weight: 500;" for="otherField1">Opd Discount :- %</label>
-                                <input type="tel" class="form-control w-100" name="Opd_disount" id="otherField1">
-                            </div>
-                            <div class="col-3 pb-2">
-                                <label style="font-weight: 500;" for="otherField2">Discount On Total :- %</label>
-                                <input type="tel" class="form-control w-100" name="Hospital_discount" id="otherField2">
-                            </div>
-                            <div class="col-4">
-                                <label style="font-weight: 500;" for="otherField1">Hospital/Doctor Specility</label>
-                                <input type="text" class="form-control w-100" name="Specility" id="otherField1">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group" id="otherFieldGroupDivv">
-                        <div class="row">
-                            <div class="col-3 pb-2">
-                                <label style="font-weight: 500;" for="otherField11">Lab Name</label>
-                                <input type="text" class="form-control w-100" name="lab_name" id="otherField11">
-                            </div>
-                            <div class="col-3 pb-2">
-                                <label style="font-weight: 500;" for="otherField22">Lab Category</label>
-                                <select class="form-control" name="lab_cat" id="seeAnotherFieldGroup">
-                                    <option value="no">Select...</option>
-                                    <option value="no">Radiology</option>
-                                    <option value="no">Pathology</option>
-                                    <option value="no">Radiology and Pathology Both</option>
-                                </select>
-                            </div>
-
-                        </div>
+                    <div class="form-group" >
+                        
                     </div>
                 </div>
             </div>
@@ -349,7 +354,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
     <script>
         $("#seeAnotherField").change(function () {
-            if ($(this).val() == "yes") {
+            if ($(this).val() == "no") {
                 $('#otherFieldDiv').show();
                 $('#otherField').attr('required', '');
                 $('#otherField').attr('data-error', 'This field is required.');
@@ -361,31 +366,69 @@
         });
         $("#seeAnotherField").trigger("change");
         $("#seeAnotherFieldGroup").change(function () {
-            if ($(this).val() == "yes") {
+            if ($(this).val() == "Hospital") {
                 $('#otherFieldGroupDiv').show();
                 $('#otherField1').attr('required', '');
                 $('#otherField1').attr('data-error', 'This field is required.');
                 $('#otherField2').attr('required', '');
                 $('#otherField2').attr('data-error', 'This field is required.');
+                $('#business').hide();
+                $('#Business_name').removeAttr('required');
+                $('#Business_name').removeAttr('data-error');
+                $('#Merchant_name').removeAttr('required');
+                $('#Merchant_name').removeAttr('data-error');
+                $('#Discount').removeAttr('required');
+                $('#Discount').removeAttr('data-error');
+                $('#otherFieldGroupDivv').hide();
+                $('#otherField11').removeAttr('required');
+                $('#otherField11').removeAttr('data-error');
+                $('#otherField22').removeAttr('required');
+                $('#otherField22').removeAttr('data-error');
             } else {
                 $('#otherFieldGroupDiv').hide();
                 $('#otherField1').removeAttr('required');
                 $('#otherField1').removeAttr('data-error');
                 $('#otherField2').removeAttr('required');
                 $('#otherField2').removeAttr('data-error');
+                $('#business').show();
+                $('#Business_name').attr('required', '');
+                $('#Business_name').attr('data-error', 'This field is required.');
+                $('#Merchant_name').attr('required', '');
+                $('#Merchant_name').attr('data-error', 'This field is required.');
+                $('#Discount').attr('required', '');
+                $('#Discount').attr('data-error', 'This field is required.');
+                $('#otherFieldGroupDivv').hide();
+                $('#otherField11').removeAttr('required');
+                $('#otherField11').removeAttr('data-error');
+                $('#otherField22').removeAttr('required');
+                $('#otherField22').removeAttr('data-error');
             }
-            if ($(this).val() == "yes2") {
+            if ($(this).val() == "Lab") {
                 $('#otherFieldGroupDivv').show();
                 $('#otherField11').attr('required', '');
                 $('#otherField11').attr('data-error', 'This field is required.');
                 $('#otherField22').attr('required', '');
                 $('#otherField22').attr('data-error', 'This field is required.');
+                $('#business').hide();
+                $('#Business_name').removeAttr('required');
+                $('#Business_name').removeAttr('data-error');
+                $('#Merchant_name').removeAttr('required');
+                $('#Merchant_name').removeAttr('data-error');
+                $('#Discount').removeAttr('required');
+                $('#Discount').removeAttr('data-error');
+                $('#otherFieldGroupDiv').hide();
+                $('#otherField1').removeAttr('required');
+                $('#otherField1').removeAttr('data-error');
+                $('#otherField2').removeAttr('required');
+                $('#otherField2').removeAttr('data-error');
             } else {
                 $('#otherFieldGroupDivv').hide();
                 $('#otherField11').removeAttr('required');
                 $('#otherField11').removeAttr('data-error');
                 $('#otherField22').removeAttr('required');
                 $('#otherField22').removeAttr('data-error');
+               
+                
             }
         });
         $("#seeAnotherFieldGroup").trigger("change");

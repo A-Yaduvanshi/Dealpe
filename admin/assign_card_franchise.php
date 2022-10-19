@@ -55,6 +55,7 @@ $run = mysqli_query($conn, $sql_2);
     }
 </style>
 
+
 <body class="bg-dark m-5">
     <div class="container-fluid container-md container-sm border border-primary bg-white">
         <header style="font-weight: bold; color:brown;text-align:center;text-decoration:underline;font-size:30px;">Assign Cards To Franchise</header>
@@ -93,14 +94,16 @@ $run = mysqli_query($conn, $sql_2);
                     <!-- < class="details personal"> -->
                     <!-- <span class="title" style="font-size: 22px;text-align:center;text-decoration:underline;">Assign Cards</span> -->
                     <div class="row ">
-                        <div class="col-3 m-4">
-                            <label>Available membership_card</label>
-                            <input list="list1" name="membership_card" placeholder="select card no.">
-                            <datalist id="list1">
+                         <div class="col-3 m-4">
+                        <!--    <label>Available membership_card</label>
+                            <input list="list1" name="membership_card[]" multiple="true" placeholder="select card no.">
+                            <datalist id="list1" name="membership_card[]" multiple="multiple">  -->
+                            <select  name="membership_card[]"  class="mul-select" multiple="multiple">
                                 <?php while ($row_2 = mysqli_fetch_assoc($run)) { ?>
-                                    <option><?php echo $row_2['membership_card'] ?></option>
+                                    <option value="<?php echo $row_2['membership_card'] ?>"><?php echo $row_2['membership_card'] ?></option>
                                 <?php } ?>
-                            </datalist>
+                                </select>
+                            <!-- </datalist> -->
                         </div>
                         <div class="col-2 m-4 ">
                             <label>Enter Franchise Id No.</label>
@@ -129,6 +132,14 @@ $run = mysqli_query($conn, $sql_2);
             </form>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            $(".mul-select").select2({
+                placeholder: "select data-structures",
+                tags: true,
+            });
+        })
+    </script>
     <!-- <scr src="script.js"></scr/ipt> -->
 </body>
 
