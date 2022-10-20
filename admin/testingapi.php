@@ -2,16 +2,25 @@
 include "../api/connection.php";
 
 $cards = $_GET['cards'];
+
 $name = $_GET['name'];
+
 // $arr = array($cards);
 $ids = implode(',', $cards);
-// $sql = "INSERT INTO `testing`(`id`, `cards`, `name`, `date`) VALUES ('')";
+$run="SELECT * FROM `testing` where `cards` IN($ids) ";
+$data=mysqli_query($conn,$run);
+$num=mysqli_num_rows($data);
+echo $num;
+if($num>0){
 $sql = "UPDATE `testing` SET `name`='".$name."' WHERE `cards` IN($ids)";
-
 $result = mysqli_query($conn, $sql);
 if ($result) {
     echo "Data update";
+    echo "$ids";
 }
+
+}
+// $sql = "INSERT INTO `testing`(`id`, `cards`, `name`, `date`) VALUES ('')";
 
 // if ($result->num_rows > 0) {
 //     while ($row = $result->fetch_assoc()) {

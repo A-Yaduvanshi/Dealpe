@@ -172,6 +172,7 @@ form .user-details .input-box{
            <select name="expiry"  style="width: 270px;padding:10px;">
             <option value="3">3 Month</option>
             <option value="6">6 Month</option>
+            <option value="12">1 year</option>
       </select>
             
           </div>

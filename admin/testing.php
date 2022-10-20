@@ -64,7 +64,7 @@
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="form-group form">
 
-                    <!-- <form action="./testingapi.php" method="get">
+                    <form action="./testingapi.php" method="get">
                       
                         <select name="name[]" class="mul-select" multiple="true">
                             <option value="a">Stack</option>
@@ -81,7 +81,7 @@
                             <span class="btnText">Submit</span>
                       
                         </button>
-                    </form> -->
+                    </form>
 
                     <form action="./testingapi.php" method="get">
                         <?php
@@ -93,7 +93,7 @@
                         <!-- Various options in drop down menu to
 						select the types of data structures 
 						that we need -->
-                     <select name="cards[]" class="mul-select" multiple="multiple">
+                     <select name="cards[]" class="mul-select" multiple="true">
                             <?php while ($fetch = mysqli_fetch_assoc($run)) { ?>
 
                                 <option value="<?php echo $fetch['cards'] ?>"><?php echo $fetch['cards'] ?></option>
@@ -124,14 +124,15 @@
     </script>
 </body>
 
-</html> <form action="assignCard.php" method="get" enctype="multipart/form-data">
+</html>
+ <!-- <form action="assignCard.php" method="get" enctype="multipart/form-data">
             <div class="form first" style="margin-left: 100px;">
-                <!-- < class="details personal"> -->
+
                 <span class="title" style="font-size: 22px;text-align:center;text-decoration:underline;">Assign Cards</span>
 
                 <div class="fields">
                     <div class="input-field">
-                        <!-- <?php
+                         <?php
                                 error_reporting(E_ALL ^ E_WARNING);
                                 $sql = "SELECT * FROM `membership_card` WHERE `id`=(SELECT MAX(`id`) FROM  `membership_card`) AND `asign_count`='0'";
                                 $run = mysqli_query($conn, $sql);
@@ -139,11 +140,11 @@
                                 if ($fetch['membership_card'] == NULL) {
                                     echo '0';
                                 } else {
-                                    # code...
+                                    
                                     echo $fetch['membership_card'];
                                 }
 
-                                ?> -->
+                                ?> 
                         <label>Enter Card</label>
                         <input type="text" placeholder="Enter your Cards Assign" name="membership_card" required>
                     </div>
@@ -156,18 +157,12 @@
                         <label>Quantity</label>
                         <input type="text" placeholder="Enter number Quantity" name="quantity" required>
                     </div>
-                    <!-- <div class="input-field">
-                         <label>Membership Duration</label>
-                         <select name="exiry_date">
-                             <option value="3 months">3 months</option>
-                             <option value="6 months">6 months</option>
-                         </select>
-                     </div> -->
+                   
                 </div>
 
 
                 <div class="details ID">
-                    <!-- <span class="title">Identity Details</span> -->
+                 
 
                     <div class="fields">
 
@@ -175,10 +170,10 @@
 
                         <button class="nextBtn" style="margin-left: 180px;">
                             <span class="btnText">Submit</span>
-                            <!-- <i class="uil uil-navigator"></i> -->
+                        
                         </button>
                     </div>
                 </div>
 
 
-        </form>
+        </form> -->

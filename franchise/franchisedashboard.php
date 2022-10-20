@@ -228,7 +228,7 @@ if (!isset($_SESSION['Business_Name'])) {
 
       .home-content .overview-boxes {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-around;
         flex-wrap: wrap;
         padding: 0 20px;
@@ -237,7 +237,7 @@ if (!isset($_SESSION['Business_Name'])) {
 
       .overview-boxes .box {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-evenly;
         width: calc(100% / 4 - 15px);
         background: rgb(255, 255, 255);
@@ -604,7 +604,7 @@ if (!isset($_SESSION['Business_Name'])) {
         <li>
           <a href="./fran2salesc.php">
             <i class='bx bx-coin-stack'></i>
-            <span class="links_name">Sales Commission</span>
+            <span class="links_name">Sales Commission Earn</span>
           </a>
         </li>
         <li>
@@ -632,10 +632,10 @@ if (!isset($_SESSION['Business_Name'])) {
         </div>
         <!-- <a href="#" ><img style="height: 40px;  widht:40px; border-radius: 50%;" src="https://flyclipart.com/thumb2/logout-off-power-shutdown-switch-icon-97780.png"  /></a> -->
         <a style="text-decoration-line: none;" href="../api/franchiselogout.php">
-          <div class="profile-details">
+          <div class="profile-details" >
             <!-- <img src="./image/pic1.png" alt=""> -->
             <span class="admin_name"><?php echo $_SESSION['Business_Name'] ?></span>
-            <button onclick="myFunction()" style="width: 100px; height:40px; border-radius:10px; margin-left:5px; background-color:transparent; color:gray; font-size: 15px;"> Sign Out</button>
+            <button onclick="myFunction()" style="width: 100px; height:40px; border-radius:10px; margin-left:30px; background-color:transparent; color:gray; font-size: 15px;"> Sign Out</button>
           </div>
         </a>
         <a href="./Confirmpassword.html"> <button style="width: 100px; height:60px; border-radius:10px; margin-left:5px; background-color:transparent; color:gray; font-size: 15px;">Reset Password</button></a>
@@ -666,7 +666,7 @@ if (!isset($_SESSION['Business_Name'])) {
               $fetchBussinessName = mysqli_fetch_assoc($query_4);
               $bussiness = $fetchBussinessName['Business_Name'];
               // echo $bussiness;
-              $sql = "SELECT COUNT(*) as total_pet FROM `membership_card` WHERE `assign`='1' AND`assign_name`='" . $bussiness . "' AND `asign_count`='1' ";
+              $sql = "SELECT COUNT(*) as total_pet FROM `membership_card` WHERE `assign`='1' AND`assign_name`='" . $bussiness . "' AND `asign_count`='1' and `F_id`= '" . $_SESSION['sess_user'] . "' ";
               $run = mysqli_query($conn, $sql);
               $data = mysqli_fetch_assoc($run);
               ?>
@@ -710,8 +710,6 @@ if (!isset($_SESSION['Business_Name'])) {
                     $data_2 = mysqli_fetch_assoc($run_2);
                     ?> -->
               <?php include "../api/connection.php";
-
-
               $sales_name = "SELECT * FROM `sales` WHERE `frachise_id`='" . $_SESSION['sess_user'] . "'";
               $querys = mysqli_query($conn, $sales_name);
               $fetch = mysqli_fetch_assoc($querys);
@@ -724,17 +722,16 @@ if (!isset($_SESSION['Business_Name'])) {
               // $sql_2 = "SELECT * FROM `sales` WHERE `Customer_name`='" . $_SESSION['customer_name'] . "'";
               // $run_2 = mysqli_query($conn, $sql_2);
               // $data_2 = mysqli_fetch_assoc($run_2);
-              $fran="SELECT * FROM `franchisesignup` WHERE `id`='". $_SESSION['sess_user']."'";
-              $data_fran=mysqli_query($conn,$fran);
-$fetch_fran=mysqli_fetch_assoc($data_fran);
+              $fran = "SELECT * FROM `franchisesignup` WHERE `id`='" . $_SESSION['sess_user'] . "'";
+              $data_fran = mysqli_query($conn, $fran);
+              $fetch_fran = mysqli_fetch_assoc($data_fran);
               // echo $fetch_fran['commission'];
               ?>
-
               <div class="box-topic"> Franchise Commission</div>
               <div class="number"><?php
                                   if ($data['SUM(membership_price)'] > 0) {
                                     # code...
-                                    echo ($data['SUM(membership_price)']*$fetch_fran['commission'])/100;
+                                    echo ($data['SUM(membership_price)'] * $fetch_fran['commission']) / 100;
                                   } else {
                                     echo 0;
                                   }
@@ -746,7 +743,7 @@ $fetch_fran=mysqli_fetch_assoc($data_fran);
             </div>
             <!-- <i class='bx bxs-cart-add cart two'></i> -->
           </div>
-          <div class="box">
+          <div class="box" >
             <div class="right-side">
               <!-- <?php include "../api/connection.php";
                     $sql = "SELECT  SUM(membership_price) FROM `membership_card` WHERE `assign_name`='" . $_SESSION['owener_Name'] . "' and `sale_count`=1";
@@ -757,8 +754,6 @@ $fetch_fran=mysqli_fetch_assoc($data_fran);
                     $data_2 = mysqli_fetch_assoc($run_2);
                     ?> -->
               <?php include "../api/connection.php";
-
-
               $sales_name = "SELECT * FROM `sales` WHERE `frachise_id`='" . $_SESSION['sess_user'] . "'";
               $querys = mysqli_query($conn, $sales_name);
               $fetch = mysqli_fetch_assoc($querys);
@@ -788,19 +783,10 @@ $fetch_fran=mysqli_fetch_assoc($data_fran);
             </div>
             <!-- <i class='bx bxs-cart-add cart two'></i> -->
           </div>
-          <div class="box">
+          <div class="box" style="margin-top: 10px; margin-right: 930px;">
             <div class="right-side">
-              <!-- <?php include "../api/connection.php";
-                    $sql = "SELECT  SUM(membership_price) FROM `membership_card` WHERE `assign_name`='" . $_SESSION['owener_Name'] . "' and `sale_count`=1";
-                    $run = mysqli_query($conn, $sql);
-                    $data = mysqli_fetch_assoc($run);
-                    $sql_2 = "SELECT * FROM `franchisesignup` WHERE `Business_email`='" . $_SESSION['sess_email'] . "'";
-                    $run_2 = mysqli_query($conn, $sql_2);
-                    $data_2 = mysqli_fetch_assoc($run_2);
-                    ?> -->
+             
               <?php include "../api/connection.php";
-
-
               $sales_name = "SELECT * FROM `sales` WHERE `frachise_id`='" . $_SESSION['sess_user'] . "'";
               $querys = mysqli_query($conn, $sales_name);
               $fetch = mysqli_fetch_assoc($querys);
@@ -823,77 +809,7 @@ $fetch_fran=mysqli_fetch_assoc($data_fran);
                                     echo 0;
                                   }
                                   ?></div>
-              <div class="indicator">
-                <!-- <i class='bx bx-up-arrow-alt'></i>
-              <span class="text">Up from yesterday</span> -->
-              </div>
-            </div>
-            <!-- <i class='bx bxs-cart-add cart two'></i> -->
-          </div>
-        </div>
-        <!-- <span class="text">Recent Card Sold Today</span> -->
-      </div>
-      <!-- <table class="_table table_sort" style="margin-right: 20px;">
-        <thead>
-          <tr><?php
-              // include '../api/connection.php';
-              // $Sales = $_GET['sale'];
-              //Fetching Sales_person name
-              // $sql = "SELECT * FROM `membership_card` WHERE `assign_name`='" . $_SESSION['owener_Name'] . "' and `assign`='0'";
-              // $query = mysqli_query($conn, $sql);
-              // $fetchData = mysqli_fetch_assoc($query);
-              // echo $fetchData['sales_person'];
-              // Fetching data for showing sales persons details and commission in table
-              // $query_2 = "SELECT * FROM `sales` WHERE `frachise_id`='" . $_SESSION['sess_user'] . "'; ";
-              // $run = mysqli_query($conn, $query_2);
-              //fetching the membership_price 
-              // $query_8 = "SELECT * FROM `membership_card` WHERE `sales_person` = '" . $Sales . "' and `customer_select` = '1'";
-              // $run_8 = mysqli_query($conn, $query_8);
-              // $row_card_price = mysqli_fetch_assoc($run_8);
-              // echo $row_card_price["membership_price"];
-              //fetching the franchise id for finding the sales Person
-              // $query_3 = "SELECT * FROM `franchisesignup` WHERE `owner_name` ='" . $_SESSION['owener_Name'] . "'";
-              // $fetchDataid = mysqli_query($conn, $query_3);
-              // $franid = mysqli_fetch_assoc($fetchDataid);
-              // echo $franid['id'];
-              //fetching the sale person Commission
-              // $query_4 = "SELECT * FROM `sales` WHERE `frachise_id` = '" . $_SESSION['sess_user'] . "'";
-              // $saleDataid = mysqli_query($conn, $query_4);
-              // $saleid = mysqli_fetch_assoc($saleDataid);
-              // echo $saleid['commission'];
-              // $total_commision = $row_card_price["membership_price"] * $saleid['commission'] / 100;
-              // 
-              ?>
-            <th>id</th> -->
-      <!-- <th></th> -->
-      <!-- <th>Membership Price</th> -->
-      <!-- <th>Commision</th> -->
-      <!-- <th>Sale Person </th> -->
-      <!-- <th>Remove Data</th> -->
-      <!-- </tr> -->
-      <!-- </thead> -->
-      <!-- <tbody id="table_filter"> -->
-
-      <!-- <tr> -->
-      <!-- <td><?php echo $row['id']; ?></td> -->
-      <!-- <td><?php echo $row['membership_card']; ?></td> -->
-      <!-- <td><?php echo $row['membership_price']; ?></td> -->
-      <!-- <td><?php echo  $total_commision; ?></td>
-            <td> -->
-      <!-- <input style="width: 90%" list="list2" name="sale"> -->
-      <!-- <?php $row = mysqli_fetch_assoc($run); { ?>
-                <select name="sale">
-                  <option><?php echo $row['Customer_name']; ?></option>
-                </select> -->
-
-      <!-- </div> -->
-      <!-- </td> -->
-      <!-- <td> <a href="./removesale.php?id=<?php echo $res[0]; ?>"><Button class="btn btn-block bg-danger text-white">
-                Remove</Button></a></td> -->
-      <!-- </tr> -->
-      <!-- <?php }  ?> -->
-      <!-- </tbody> -->
-      <!-- </table> -->
+            
       </div>
       </div>
     </section>

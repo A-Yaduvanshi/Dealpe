@@ -31,6 +31,19 @@ $run = mysqli_query($conn, $sql_2);
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <!--<title>Responsive Regisration Form </title>-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js">
+</script>
+
+<!-- Default bootstrap CSS link taken from the
+    bootstrap website-->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> -->
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <style>
     /* ===== Google Font Import - Poppins ===== */
@@ -53,6 +66,10 @@ $run = mysqli_query($conn, $sql_2);
         text-align: center;
         margin: auto;
     }
+    
+        .mul-select {
+            min-width: 100%;
+        }
 </style>
 
 
@@ -91,14 +108,14 @@ $run = mysqli_query($conn, $sql_2);
         <div class="container-fluid my-5 border border-primary">
             <form action="assignCard.php" method="POST" enctype="multipart/form-data">
                 <div class="container-fluid container-md container-sm ">
-                    <!-- < class="details personal"> -->
-                    <!-- <span class="title" style="font-size: 22px;text-align:center;text-decoration:underline;">Assign Cards</span> -->
-                    <div class="row ">
+                  
+                  
+                    <div class="row " style="align-items: center; align-self: center;">
                          <div class="col-3 m-4">
-                        <!--    <label>Available membership_card</label>
-                            <input list="list1" name="membership_card[]" multiple="true" placeholder="select card no.">
-                            <datalist id="list1" name="membership_card[]" multiple="multiple">  -->
-                            <select  name="membership_card[]"  class="mul-select" multiple="multiple">
+                           <label>Available membership_card</label>
+                            <!-- <input list="list1" name="membership_card[]" multiple="true" placeholder="select card no.">
+                            <datalist id="list1" >  -->
+                            <select  name="membership_card[]"  class="mul-select" multiple="true">
                                 <?php while ($row_2 = mysqli_fetch_assoc($run)) { ?>
                                     <option value="<?php echo $row_2['membership_card'] ?>"><?php echo $row_2['membership_card'] ?></option>
                                 <?php } ?>
@@ -110,20 +127,14 @@ $run = mysqli_query($conn, $sql_2);
                             <input type="text" placeholder="Enter Franchise ID no." name="id" required>
                         </div>
                         <div class="col-2 m-4">
-                            <label>Franchise Name</label>
+                            <label>Franchise Business Name</label>
                             <input type="text" placeholder="Enter your name" name="franchise_name" required>
                         </div>
-                        <div class="col-3 m-4">
+                        <!-- <div class="col-3 m-4">
                             <label>Membership card Quantity</label>
                             <input type="text" placeholder="Enter number Quantity" name="quantity" required>
-                        </div>
-                        <!-- <div class="input-field">
-                         <label>Membership Duration</label>
-                         <select name="exiry_date">
-                             <option value="3 months">3 months</option>
-                             <option value="6 months">6 months</option>
-                         </select>
-                     </div> -->
+                        </div> -->
+                       
                         <div class="m-3 text-center">
                             <!-- <span class="title">Identity Details</span> -->
                             <button type="text" name="submit" class="btn btn-primary"><span class="btnText">Submit</span></button>
